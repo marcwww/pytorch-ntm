@@ -129,33 +129,34 @@ class abcTaskModelTraining(object):
     optimizer = attrib()
     dataloader_train = attrib()
     dataloader_valid = attrib()
-    device = torch.device(params.gpu if torch.cuda.is_available() else "cpu")
-
 
     @net.default
     def default_net(self):
         # We have 1 additional input for the delimiter which is passed on a
         # separate "control" channel
+        device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         net = EncapsulatedNTM(self.params.sequence_width, self.params.sequence_width,
                               self.params.controller_size, self.params.controller_layers,
                               self.params.num_heads,
                               self.params.memory_n, self.params.memory_m).\
-                                to(self.device)
+                                to(device)
         return net
 
     @dataloader_train.default
     def default_dataloader_train(self):
+        device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         return dataloader_train(self.params.batch_size,
                                 self.params.sequence_width,
                                 self.params.ftrain,
-                                self.device)
+                                device)
 
     @dataloader_valid.default
     def default_dataloader_valid(self):
+        device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         return dataloader_valid(self.params.batch_size,
                                 self.params.sequence_width,
                                 self.params.fvalid,
-                                self.device)
+                                device)
 
     @criterion.default
     def default_criterion(self):
