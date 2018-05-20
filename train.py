@@ -215,7 +215,7 @@ def train_model(model, args):
     costs = []
     seq_lengths = []
     start_ms = get_ms()
-
+    num=len(model.dataloader_train)
     for epoch in range(model.params.epoches):
         for batch_num, x, y in model.dataloader_train:
             loss, cost = train_batch(model.net, model.criterion, model.optimizer, x, y)
@@ -225,7 +225,7 @@ def train_model(model, args):
             seq_lengths += [y.size(0)]
 
             # Update the progress bar
-            progress_bar(epoch+1, args.report_interval, loss)
+            progress_bar(batch_num+epoch*num, args.report_interval*num, loss)
 
             # Report
             if (epoch+1) % args.report_interval == 0:
