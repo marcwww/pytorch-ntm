@@ -215,7 +215,7 @@ def train_model(model, args):
     costs = []
     seq_lengths = []
     start_ms = get_ms()
-    num=len(model.dataloader_train)
+    num=len(model.dataloader_train)/batch_size
     for epoch in range(model.params.epoches):
         for batch_num, x, y in model.dataloader_train:
             loss, cost = train_batch(model.net, model.criterion, model.optimizer, x, y)
