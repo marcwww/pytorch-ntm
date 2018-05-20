@@ -225,7 +225,7 @@ def train_model(model, args):
             seq_lengths += [y.size(0)]
 
             # Update the progress bar
-            progress_bar(batch_num, args.report_interval, loss)
+            progress_bar(epoch+1, args.report_interval, loss)
 
             # Report
             if (epoch+1) % args.report_interval == 0:
