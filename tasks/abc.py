@@ -104,7 +104,7 @@ class abcTaskParams(object):
     ftrain = attrib(default='./data/train_abc-1000.txt', convert=str)
     fvalid = attrib(default='./data/valid_abc-1000.txt', convert=str)
     epoches = attrib(default=1000, convert=int)
-    gpu = attrib(default=0, convert=int)
+    gpu = attrib(default='cpu', convert=str)
 
 #
 # To create a network simply instantiate the `:class:CopyTaskModelTraining`,
