@@ -33,8 +33,8 @@ TASKS = {
 
 # Default values for program arguments
 RANDOM_SEED = 1000
-REPORT_INTERVAL = 200
-CHECKPOINT_INTERVAL = 1000
+REPORT_INTERVAL = 2
+CHECKPOINT_INTERVAL = 10
 
 
 def get_ms():
@@ -228,7 +228,7 @@ def train_model(model, args):
             progress_bar(batch_num, args.report_interval, loss)
 
             # Report
-            if batch_num % args.report_interval == 0:
+            if (epoch+1) % args.report_interval == 0:
                 mean_loss = np.array(losses[-args.report_interval:]).mean()
                 mean_cost = np.array(costs[-args.report_interval:]).mean()
                 mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
@@ -240,7 +240,7 @@ def train_model(model, args):
                 start_ms = get_ms()
 
             # Checkpoint
-            if (args.checkpoint_interval != 0) and (batch_num % args.checkpoint_interval == 0):
+            if (args.checkpoint_interval != 0) and ((epoch+1) % args.checkpoint_interval == 0):
                 valid_accur = test_model(model)
 
                 save_checkpoint(model.net, model.params.name, args,
