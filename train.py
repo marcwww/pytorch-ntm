@@ -22,10 +22,12 @@ LOGGER = logging.getLogger(__name__)
 
 from tasks.copytask import CopyTaskModelTraining, CopyTaskParams
 from tasks.repeatcopytask import RepeatCopyTaskModelTraining, RepeatCopyTaskParams
+from tasks.abc import abcTaskModelTraining, abcTaskParams
 
 TASKS = {
     'copy': (CopyTaskModelTraining, CopyTaskParams),
-    'repeat-copy': (RepeatCopyTaskModelTraining, RepeatCopyTaskParams)
+    'repeat-copy': (RepeatCopyTaskModelTraining, RepeatCopyTaskParams),
+    'abc': (abcTaskModelTraining, abcTaskParams)
 }
 
 
@@ -64,7 +66,7 @@ def progress_bar(batch_num, report_interval, last_loss):
         "=" * fill, " " * (40 - fill), batch_num, last_loss), end='')
 
 
-def save_checkpoint(net, name, args, batch_num, losses, costs, seq_lengths):
+def save_checkpoint(net, name, args, batch_num, losses, costs, valid_accur, seq_lengths):
     progress_clean()
 
     basename = "{}/{}-{}-batch-{}".format(args.checkpoint_path, name, args.seed, batch_num)
@@ -78,6 +80,7 @@ def save_checkpoint(net, name, args, batch_num, losses, costs, seq_lengths):
     content = {
         "loss": losses,
         "cost": costs,
+        "valid_accur": valid_accur,
         "seq_lengths": seq_lengths
     }
     open(train_fname, 'wt').write(json.dumps(content))
@@ -88,6 +91,36 @@ def clip_grads(net):
     parameters = list(filter(lambda p: p.grad is not None, net.parameters()))
     for p in parameters:
         p.grad.data.clamp_(-10, 10)
+
+def test_batch(net, X, Y):
+    with torch.no_grad():
+        inp_seq_len = X.size(0)
+        outp_seq_len, batch_size, _ = Y.size()
+
+        # New sequence
+        net.init_sequence(batch_size)
+
+        # Feed the sequence + delimiter
+        for i in range(inp_seq_len):
+            net(X[i])
+
+        # Read the output (no input given)
+        y_out = Variable(torch.zeros(Y.size()))
+        for i in range(outp_seq_len):
+            y_out[i], _ = net()
+
+        y_out_binarized = y_out.clone().data
+        y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
+
+        ncorrect=0
+        ntotal=0
+        for i in range(batch_size):
+            cost=torch.sum(torch.abs(y_out_binarized[:,i,:]-Y.data[:,i,:])).numpy()
+            if cost==0:
+                ncorrect+=1
+            ntotal+=1
+
+        return ncorrect, ntotal
 
 
 def train_batch(net, criterion, optimizer, X, Y):
@@ -160,6 +193,16 @@ def evaluate(net, criterion, X, Y):
 
     return result
 
+def test_model(model):
+    nc = 0
+    nt = 0.0
+    for batch_num, x, y in model.dataloader_valid:
+        dnc, dnt = test_batch(model.net, x, y)
+        nc += dnc
+        nt += dnt
+    valid_accur = nc / nt
+
+    return valid_accur
 
 def train_model(model, args):
     num_batches = model.params.num_batches
@@ -173,29 +216,35 @@ def train_model(model, args):
     seq_lengths = []
     start_ms = get_ms()
 
-    for batch_num, x, y in model.dataloader:
-        loss, cost = train_batch(model.net, model.criterion, model.optimizer, x, y)
-        losses += [loss]
-        costs += [cost]
-        seq_lengths += [y.size(0)]
+    for epoch in range(model.params.epoches):
+        for batch_num, x, y in model.dataloader_train:
+            loss, cost = train_batch(model.net, model.criterion, model.optimizer, x, y)
 
-        # Update the progress bar
-        progress_bar(batch_num, args.report_interval, loss)
+            losses += [loss]
+            costs += [cost]
+            seq_lengths += [y.size(0)]
 
-        # Report
-        if batch_num % args.report_interval == 0:
-            mean_loss = np.array(losses[-args.report_interval:]).mean()
-            mean_cost = np.array(costs[-args.report_interval:]).mean()
-            mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
-            progress_clean()
-            LOGGER.info("Batch %d Loss: %.6f Cost: %.2f Time: %d ms/sequence",
-                        batch_num, mean_loss, mean_cost, mean_time)
-            start_ms = get_ms()
+            # Update the progress bar
+            progress_bar(batch_num, args.report_interval, loss)
 
-        # Checkpoint
-        if (args.checkpoint_interval != 0) and (batch_num % args.checkpoint_interval == 0):
-            save_checkpoint(model.net, model.params.name, args,
-                            batch_num, losses, costs, seq_lengths)
+            # Report
+            if batch_num % args.report_interval == 0:
+                mean_loss = np.array(losses[-args.report_interval:]).mean()
+                mean_cost = np.array(costs[-args.report_interval:]).mean()
+                mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
+                valid_accur = test_model(model)
+                progress_clean()
+
+                LOGGER.info("Batch %d Loss: %.6f Cost: %.2f Valid Accuracy: %.2f Time: %d ms/sequence",
+                            batch_num, mean_loss, mean_cost, valid_accur, mean_time)
+                start_ms = get_ms()
+
+            # Checkpoint
+            if (args.checkpoint_interval != 0) and (batch_num % args.checkpoint_interval == 0):
+                valid_accur = test_model(model)
+
+                save_checkpoint(model.net, model.params.name, args,
+                                batch_num, losses, costs, valid_accur, seq_lengths)
 
     LOGGER.info("Done training.")
 
@@ -203,7 +252,7 @@ def train_model(model, args):
 def init_arguments():
     parser = argparse.ArgumentParser(prog='train.py')
     parser.add_argument('--seed', type=int, default=RANDOM_SEED, help="Seed value for RNGs")
-    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='copy',
+    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='abc',
                         help="Choose the task to train (default: copy)")
     parser.add_argument('-p', '--param', action='append', default=[],
                         help='Override model params. Example: "-pbatch_size=4 -pnum_heads=2"')
