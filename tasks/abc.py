@@ -30,7 +30,7 @@ def to_mtrx(seq,dim):
     mtrx=torch.stack([to_vec(w,dim) for w in seq])
     return mtrx
 
-def dataloader(batch_size,sequence_width,f):
+def dataloader(batch_size,sequence_width,f,device):
 
     lines = open(f, encoding='utf-8').read().strip().split('\n')
     pairs = [l.split('\t') for l in lines]
@@ -57,13 +57,13 @@ def dataloader(batch_size,sequence_width,f):
             batch_src.clear()
             batch_tar.clear()
 
-            yield int((i + 1) / batch_size), inp, outp
+            yield int((i + 1) / batch_size), inp.to(device), outp.to(device)
 
 
 # Generator of randomized test sequences
-def dataloader_train(batch_size,sequence_width,ftrain):
+def dataloader_train(batch_size,sequence_width,ftrain,device):
 
-    return list(dataloader(batch_size,sequence_width,ftrain))
+    return list(dataloader(batch_size,sequence_width,ftrain,device))
 
 
     # for batch_num in range(num_batches):
@@ -81,9 +81,9 @@ def dataloader_train(batch_size,sequence_width,ftrain):
     #
     #     yield batch_num+1, inp.float(), outp.float()
 
-def dataloader_valid(batch_size,sequence_width,fvalid):
+def dataloader_valid(batch_size,sequence_width,fvalid,device):
 
-    return list(dataloader(batch_size,sequence_width,fvalid))
+    return list(dataloader(batch_size,sequence_width,fvalid,device))
 
 @attrs
 class abcTaskParams(object):
@@ -104,6 +104,7 @@ class abcTaskParams(object):
     ftrain = attrib(default='./data/train_abc-1000.txt', convert=str)
     fvalid = attrib(default='./data/valid_abc-1000.txt', convert=str)
     epoches = attrib(default=1000, convert=int)
+    gpu = attrib(default=0, convert=int)
 
 #
 # To create a network simply instantiate the `:class:CopyTaskModelTraining`,
@@ -128,6 +129,8 @@ class abcTaskModelTraining(object):
     optimizer = attrib()
     dataloader_train = attrib()
     dataloader_valid = attrib()
+    device = torch.device(params.gpu if torch.cuda.is_available() else "cpu")
+
 
     @net.default
     def default_net(self):
@@ -136,20 +139,23 @@ class abcTaskModelTraining(object):
         net = EncapsulatedNTM(self.params.sequence_width, self.params.sequence_width,
                               self.params.controller_size, self.params.controller_layers,
                               self.params.num_heads,
-                              self.params.memory_n, self.params.memory_m)
+                              self.params.memory_n, self.params.memory_m).\
+                                to(self.device)
         return net
 
     @dataloader_train.default
     def default_dataloader_train(self):
         return dataloader_train(self.params.batch_size,
                                 self.params.sequence_width,
-                                self.params.ftrain)
+                                self.params.ftrain,
+                                self.device)
 
     @dataloader_valid.default
     def default_dataloader_valid(self):
         return dataloader_valid(self.params.batch_size,
                                 self.params.sequence_width,
-                                self.params.fvalid)
+                                self.params.fvalid,
+                                self.device)
 
     @criterion.default
     def default_criterion(self):

@@ -93,34 +93,34 @@ def clip_grads(net):
         p.grad.data.clamp_(-10, 10)
 
 def test_batch(net, X, Y):
-    with torch.no_grad():
-        inp_seq_len = X.size(0)
-        outp_seq_len, batch_size, _ = Y.size()
+    # with torch.no_grad():
+    inp_seq_len = X.size(0)
+    outp_seq_len, batch_size, _ = Y.size()
 
-        # New sequence
-        net.init_sequence(batch_size)
+    # New sequence
+    net.init_sequence(batch_size)
 
-        # Feed the sequence + delimiter
-        for i in range(inp_seq_len):
-            net(X[i])
+    # Feed the sequence + delimiter
+    for i in range(inp_seq_len):
+        net(X[i])
 
-        # Read the output (no input given)
-        y_out = Variable(torch.zeros(Y.size()))
-        for i in range(outp_seq_len):
-            y_out[i], _ = net()
+    # Read the output (no input given)
+    y_out = Variable(torch.zeros(Y.size()))
+    for i in range(outp_seq_len):
+        y_out[i], _ = net()
 
-        y_out_binarized = y_out.clone().data
-        y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
+    y_out_binarized = y_out.clone().data
+    y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
 
-        ncorrect=0
-        ntotal=0
-        for i in range(batch_size):
-            cost=torch.sum(torch.abs(y_out_binarized[:,i,:]-Y.data[:,i,:])).numpy()
-            if cost==0:
-                ncorrect+=1
-            ntotal+=1
+    ncorrect=0
+    ntotal=0
+    for i in range(batch_size):
+        cost=torch.sum(torch.abs(y_out_binarized[:,i,:]-Y.data[:,i,:])).numpy()
+        if cost==0:
+            ncorrect+=1
+        ntotal+=1
 
-        return ncorrect, ntotal
+    return ncorrect, ntotal
 
 
 def train_batch(net, criterion, optimizer, X, Y):
@@ -263,6 +263,8 @@ def init_arguments():
                         help="Path for saving checkpoint data (default: './')")
     parser.add_argument('--report-interval', type=int, default=REPORT_INTERVAL,
                         help="Reporting interval")
+    parser.add_argument('-gpu', type=int, default=0,
+                   help='gpu index(if could be used)')
 
     argcomplete.autocomplete(parser)
 
