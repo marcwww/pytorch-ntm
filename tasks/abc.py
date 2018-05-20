@@ -30,7 +30,7 @@ def to_mtrx(seq,dim):
     mtrx=torch.stack([to_vec(w,dim) for w in seq])
     return mtrx
 
-def dataloader(batch_size,sequence_width,f,device):
+def dataloader(batch_size,sequence_width,f):
 
     lines = open(f, encoding='utf-8').read().strip().split('\n')
     pairs = [l.split('\t') for l in lines]
@@ -57,7 +57,7 @@ def dataloader(batch_size,sequence_width,f,device):
             batch_src.clear()
             batch_tar.clear()
 
-            yield int((i + 1) / batch_size), inp.to(device), outp.to(device)
+            yield int((i + 1) / batch_size), inp, outp
 
 
 # Generator of randomized test sequences
@@ -104,7 +104,6 @@ class abcTaskParams(object):
     ftrain = attrib(default='./data/train_abc-1000.txt', convert=str)
     fvalid = attrib(default='./data/valid_abc-1000.txt', convert=str)
     epoches = attrib(default=1000, convert=int)
-    gpu = attrib(default='cpu', convert=str)
 
 #
 # To create a network simply instantiate the `:class:CopyTaskModelTraining`,
@@ -134,29 +133,25 @@ class abcTaskModelTraining(object):
     def default_net(self):
         # We have 1 additional input for the delimiter which is passed on a
         # separate "control" channel
-        device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         net = EncapsulatedNTM(self.params.sequence_width, self.params.sequence_width,
                               self.params.controller_size, self.params.controller_layers,
                               self.params.num_heads,
-                              self.params.memory_n, self.params.memory_m).\
-                                to(device)
+                              self.params.memory_n, self.params.memory_m)
         return net
 
     @dataloader_train.default
     def default_dataloader_train(self):
-        device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
+        # device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         return dataloader_train(self.params.batch_size,
                                 self.params.sequence_width,
-                                self.params.ftrain,
-                                device)
+                                self.params.ftrain)
 
     @dataloader_valid.default
     def default_dataloader_valid(self):
-        device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
+        # device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         return dataloader_valid(self.params.batch_size,
                                 self.params.sequence_width,
-                                self.params.fvalid,
-                                device)
+                                self.params.fvalid)
 
     @criterion.default
     def default_criterion(self):
