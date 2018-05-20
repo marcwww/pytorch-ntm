@@ -61,9 +61,9 @@ def dataloader(batch_size,sequence_width,f):
 
 
 # Generator of randomized test sequences
-def dataloader_train(batch_size,sequence_width,ftrain,device):
+def dataloader_train(batch_size,sequence_width,ftrain):
 
-    return list(dataloader(batch_size,sequence_width,ftrain,device))
+    return list(dataloader(batch_size,sequence_width,ftrain))
 
 
     # for batch_num in range(num_batches):
@@ -81,9 +81,9 @@ def dataloader_train(batch_size,sequence_width,ftrain,device):
     #
     #     yield batch_num+1, inp.float(), outp.float()
 
-def dataloader_valid(batch_size,sequence_width,fvalid,device):
+def dataloader_valid(batch_size,sequence_width,fvalid):
 
-    return list(dataloader(batch_size,sequence_width,fvalid,device))
+    return list(dataloader(batch_size,sequence_width,fvalid))
 
 @attrs
 class abcTaskParams(object):
