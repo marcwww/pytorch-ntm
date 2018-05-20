@@ -115,7 +115,7 @@ def test_batch(net, X, Y):
     ncorrect=0
     ntotal=0
     for i in range(batch_size):
-        cost=torch.sum(torch.abs(y_out_binarized[:,i,:]-Y.data[:,i,:])).data[0]
+        cost=torch.sum(torch.abs(y_out_binarized[:,i,:]-Y.data[:,i,:]))
         if cost==0:
             ncorrect+=1
         ntotal+=1
