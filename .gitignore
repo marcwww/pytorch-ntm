@@ -3,3 +3,4 @@ notebooks/.ipynb_checkpoints
 env
 *.model
 *.json
+*/__pycache__/
