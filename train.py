@@ -66,10 +66,10 @@ def progress_bar(batch_num, report_interval, last_loss):
         "=" * fill, " " * (40 - fill), batch_num, last_loss), end='')
 
 
-def save_checkpoint(net, name, args, batch_num, losses, costs, valid_accur, seq_lengths):
+def save_checkpoint(net, name, args, epoch, losses, costs, valid_accur, seq_lengths):
     progress_clean()
 
-    basename = "{}/{}-{}-batch-{}".format(args.checkpoint_path, name, args.seed, batch_num)
+    basename = "{}/{}-{}-epoch-{}".format(args.checkpoint_path, name, args.seed, epoch)
     model_fname = basename + ".model"
     LOGGER.info("Saving model checkpoint to: '%s'", model_fname)
     torch.save(net.state_dict(), model_fname)
@@ -235,8 +235,8 @@ def train_model(model, args):
                 valid_accur = test_model(model)
                 progress_clean()
 
-                LOGGER.info("Batch %d Loss: %.6f Cost: %.2f Valid Accuracy: %.2f Time: %d ms/sequence",
-                            batch_num, mean_loss, mean_cost, valid_accur, mean_time)
+                LOGGER.info("Epoch %d Loss: %.6f Cost: %.2f Valid Accuracy: %.2f Time: %d ms/sequence",
+                            epoch, mean_loss, mean_cost, valid_accur, mean_time)
                 start_ms = get_ms()
 
             # Checkpoint
@@ -244,7 +244,7 @@ def train_model(model, args):
                 valid_accur = test_model(model)
 
                 save_checkpoint(model.net, model.params.name, args,
-                                batch_num, losses, costs, valid_accur, seq_lengths)
+                                epoch, losses, costs, valid_accur, seq_lengths)
 
     LOGGER.info("Done training.")
 
