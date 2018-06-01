@@ -115,6 +115,7 @@ def test_batch(net, X, Y):
 
     ncorrect=0
     ntotal=0
+    Y=Y.cpu()
     for i in range(batch_size):
         cost=torch.sum(torch.abs(y_out_binarized[:,i,:]-Y.data[:,i,:]))
         if cost==0:
