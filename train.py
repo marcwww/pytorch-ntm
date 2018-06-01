@@ -123,11 +123,11 @@ def test_batch(net, embs, hid2out, X, Y):
         output = F.log_softmax(hid2out(hid))
         top1=output.data.max(1)[1]
         # (bsz, 1)
-        top1=top1.unsqueeze(1)
+        top1=top1
         outputs.append(top1)
 
     # (seq_len, bsz)
-    outputs = torch.stack(outputs,dim=1)
+    outputs = torch.stack(outputs,dim=1).unsqueeze(2)
 
     ncorrect = 0
     ntotal = 0
