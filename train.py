@@ -59,12 +59,11 @@ def progress_clean():
     print("\r{}".format(" " * 80), end='\r')
 
 
-def progress_bar(batch_num, report_interval, last_loss):
+def progress_bar(percent, last_loss):
     """Prints the progress until the next report."""
-    progress = (((batch_num-1) % report_interval) + 1) / report_interval
-    fill = int(progress * 40)
+    fill = int(percent * 40)
     print("\r[{}{}]: {} (Loss: {:.4f})".format(
-        "=" * fill, " " * (40 - fill), batch_num, last_loss), end='')
+        "=" * fill, " " * (40 - fill), percent, last_loss), end='')
 
 
 def save_checkpoint(net, name, args, epoch, losses, costs, valid_accur, seq_lengths):
@@ -219,7 +218,7 @@ def train_model(model, args):
     start_ms = get_ms()
     num=len(model.dataloader_train)/batch_size
     for epoch in range(model.params.epoches):
-        for batch_num, x, y in model.dataloader_train:
+        for percent, x, y in model.dataloader_train:
             loss, cost = train_batch(model.net, model.criterion, model.optimizer, x, y)
 
             losses += [loss]
@@ -227,7 +226,7 @@ def train_model(model, args):
             seq_lengths += [y.size(0)]
 
             # Update the progress bar
-            progress_bar(batch_num+epoch*num, args.report_interval*num, loss)
+            progress_bar(percent, loss)
 
             # Report
             if (epoch+1) % args.report_interval == 0:

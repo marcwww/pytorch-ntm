@@ -75,7 +75,9 @@ def dataloader(batch_size,sequence_width,f):
             batch_src.clear()
             batch_tar.clear()
 
-            yield int((i + 1) / batch_size), inp.to(params.device), outp.to(params.device)
+            yield (i+1.0)*batch_size/len(lines),\
+                  inp.to(params.device), \
+                  outp.to(params.device)
 
 
 # Generator of randomized test sequences
