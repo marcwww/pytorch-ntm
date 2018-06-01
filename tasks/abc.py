@@ -34,6 +34,7 @@ def to_mtrx(seq,dim):
 def dataloader(batch_size,sequence_width,f):
 
     print(params.device)
+    # sequence_width=sequence_width-1
 
     lines = open(f, encoding='utf-8').read().strip().split('\n')
     pairs = [l.split('\t') for l in lines]
@@ -55,12 +56,23 @@ def dataloader(batch_size,sequence_width,f):
             padded_tar = \
                 [F.pad(seq, (0, 0, 0, mlen_tar - seq.shape[0])) for seq in batch_tar]
 
-            inp = torch.stack(padded_src, dim=1).to(params.device)
-            outp = torch.stack(padded_tar, dim=1).to(params.device)
+            # inp, outp : (seq_len, bsz, dim)
+            seqs_inp = torch.stack(padded_src, dim=1)
+            seqs_outp = torch.stack(padded_tar, dim=1)
+            inp = Variable(torch.zeros(mlen_src+1, batch_size, sequence_width+1))
+            outp = Variable(torch.zeros(mlen_tar+1, batch_size, sequence_width+1))
+            inp[:mlen_src,:,:sequence_width] = seqs_inp
+            outp[:mlen_tar,:,:sequence_width] = seqs_outp
+
+            # delimiter
+            inp[mlen_src, :, sequence_width] = 1.0
+            outp[mlen_tar, :, sequence_width] = 1.0
+
+
             batch_src.clear()
             batch_tar.clear()
 
-            yield int((i + 1) / batch_size), inp, outp
+            yield int((i + 1) / batch_size), inp.to(params.device), outp.to(params.device)
 
 
 # Generator of randomized test sequences
@@ -136,7 +148,7 @@ class abcTaskModelTraining(object):
     def default_net(self):
         # We have 1 additional input for the delimiter which is passed on a
         # separate "control" channel
-        net = EncapsulatedNTM(self.params.sequence_width, self.params.sequence_width,
+        net = EncapsulatedNTM(self.params.sequence_width + 1, self.params.sequence_width + 1,
                               self.params.controller_size, self.params.controller_layers,
                               self.params.num_heads,
                               self.params.memory_n, self.params.memory_m)\
