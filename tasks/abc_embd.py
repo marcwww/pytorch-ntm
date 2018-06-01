@@ -20,7 +20,9 @@ w2i={'<SOS>':SOS,'<EOS>':EOS,'<PAD>':PAD}
 emb_dim=50
 VOCB=20
 embeddings=torch.nn.Embedding(num_embeddings=VOCB,embedding_dim=emb_dim).to(params.device)
+embeddings.weight.to(params.device)
 hid2out_module=torch.nn.Linear(emb_dim,VOCB).to(params.device)
+hid2out_module.weight.to(params.device)
 
 def to_idx(w):
     if w in w2i.keys():
