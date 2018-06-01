@@ -83,12 +83,11 @@ def dataloader(batch_size,sequence_width,f):
     for one_sample in data:
         yield one_sample
 
-
-
 # Generator of randomized test sequences
-def dataloader_train(batch_size,sequence_width,ftrain):
+def dataloader_train(data):
 
-    return list(dataloader(batch_size,sequence_width,ftrain))
+    for sample in data:
+        yield sample
 
 
     # for batch_num in range(num_batches):
@@ -106,9 +105,10 @@ def dataloader_train(batch_size,sequence_width,ftrain):
     #
     #     yield batch_num+1, inp.float(), outp.float()
 
-def dataloader_valid(batch_size,sequence_width,fvalid):
+def dataloader_valid(data):
 
-    return list(dataloader(batch_size,sequence_width,fvalid))
+    for sample in data:
+        yield sample
 
 @attrs
 class abcTaskParams(object):
@@ -129,7 +129,6 @@ class abcTaskParams(object):
     ftrain = attrib(default='./data/train_abc-1000.txt', convert=str)
     fvalid = attrib(default='./data/valid_abc-1000.txt', convert=str)
     epoches = attrib(default=1000, convert=int)
-
 #
 # To create a network simply instantiate the `:class:CopyTaskModelTraining`,
 # all the components will be wired with the default values.
@@ -168,16 +167,18 @@ class abcTaskModelTraining(object):
     @dataloader_train.default
     def default_dataloader_train(self):
         # device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
-        return dataloader_train(self.params.batch_size,
-                                self.params.sequence_width,
-                                self.params.ftrain)
+        data = load_data(self.params.batch_size,
+                         self.params.sequence_width,
+                         self.params.ftrain)
+        return dataloader_train(data)
 
     @dataloader_valid.default
     def default_dataloader_valid(self):
         # device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
-        return dataloader_valid(self.params.batch_size,
-                                self.params.sequence_width,
-                                self.params.fvalid)
+        data = load_data(self.params.batch_size,
+                         self.params.sequence_width,
+                         self.params.fvalid)
+        return dataloader_valid(data)
 
     @criterion.default
     def default_criterion(self):
