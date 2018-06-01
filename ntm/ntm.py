@@ -4,6 +4,7 @@ from torch import nn
 from torch.autograd import Variable
 import torch.nn.functional as F
 import crash_on_ipy
+import params
 
 class NTM(nn.Module):
     """A Neural Turing Machine."""
@@ -50,7 +51,7 @@ class NTM(nn.Module):
         self.reset_parameters()
 
     def create_new_state(self, batch_size):
-        init_r = [r.clone().repeat(batch_size, 1) for r in self.init_r]
+        init_r = [r.clone().repeat(batch_size, 1).to(params.device) for r in self.init_r]
         controller_state = self.controller.create_new_state(batch_size)
         heads_state = [head.create_new_state(batch_size) for head in self.heads]
 

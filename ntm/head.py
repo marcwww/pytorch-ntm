@@ -4,6 +4,7 @@ from torch import nn
 from torch.autograd import Variable
 import torch.nn.functional as F
 import numpy as np
+import params
 
 
 def _split_cols(mat, lengths):
@@ -64,7 +65,7 @@ class NTMReadHead(NTMHeadBase):
 
     def create_new_state(self, batch_size):
         # The state holds the previous time step address weightings
-        return Variable(torch.zeros(batch_size, self.N))
+        return Variable(torch.zeros(batch_size, self.N)).to(params.device)
 
     def reset_parameters(self):
         # Initialize the linear layers
@@ -100,7 +101,7 @@ class NTMWriteHead(NTMHeadBase):
         self.reset_parameters()
 
     def create_new_state(self, batch_size):
-        return Variable(torch.zeros(batch_size, self.N))
+        return Variable(torch.zeros(batch_size, self.N)).to(params.device)
 
     def reset_parameters(self):
         # Initialize the linear layers

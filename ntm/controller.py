@@ -3,7 +3,7 @@ import torch
 from torch import nn
 from torch.nn import Parameter
 import numpy as np
-
+import params
 
 class LSTMController(nn.Module):
     """An NTM controller based on LSTM."""
@@ -26,8 +26,8 @@ class LSTMController(nn.Module):
 
     def create_new_state(self, batch_size):
         # Dimension: (num_layers * num_directions, batch, hidden_size)
-        lstm_h = self.lstm_h_bias.clone().repeat(1, batch_size, 1)
-        lstm_c = self.lstm_c_bias.clone().repeat(1, batch_size, 1)
+        lstm_h = self.lstm_h_bias.clone().repeat(1, batch_size, 1).to(params.device)
+        lstm_c = self.lstm_c_bias.clone().repeat(1, batch_size, 1).to(params.device)
         return lstm_h, lstm_c
 
     def reset_parameters(self):
