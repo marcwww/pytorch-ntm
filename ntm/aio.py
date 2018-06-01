@@ -7,7 +7,7 @@ from .ntm import NTM
 from .controller import LSTMController
 from .head import NTMReadHead, NTMWriteHead
 from .memory import NTMMemory
-
+import params
 
 class EncapsulatedNTM(nn.Module):
 
@@ -55,7 +55,8 @@ class EncapsulatedNTM(nn.Module):
 
     def forward(self, x=None):
         if x is None:
-            x = Variable(torch.zeros(self.batch_size, self.num_inputs))
+            x = Variable(torch.zeros(self.batch_size, self.num_inputs)).\
+                to(params.device)
 
         o, self.previous_state = self.ntm(x, self.previous_state)
         return o, self.previous_state
