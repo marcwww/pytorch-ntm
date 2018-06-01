@@ -151,7 +151,7 @@ def train_batch(net, criterion, optimizer, X, Y):
     y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
 
     # The cost is the number of error bits per sequence
-    cost = torch.sum(torch.abs(y_out_binarized - Y.data))
+    cost = torch.sum(torch.abs(y_out_binarized - Y.data.cpu()))
 
     return loss.data[0], cost / batch_size
 
