@@ -215,15 +215,17 @@ def evaluate(net, criterion, X, Y):
     return result
 
 def test_model(model):
-    nc = 0
-    nt = 0.0
-    for batch_num, x, y in model.dataloader_valid:
-        dnc, dnt = test_batch(model.net,model.embs,model.hid2out,x,y)
-        nc += dnc
-        nt += dnt
-    valid_accur = nc / nt
+    with torch.no_grad():
 
-    return valid_accur
+        nc = 0
+        nt = 0.0
+        for batch_num, x, y in model.dataloader_valid:
+            dnc, dnt = test_batch(model.net,model.embs,model.hid2out,x,y)
+            nc += dnc
+            nt += dnt
+        valid_accur = nc / nt
+
+        return valid_accur
 
 def train_model(model, args):
     num_batches = model.params.num_batches
@@ -248,7 +250,6 @@ def train_model(model, args):
 
             # Update the progress bar
             progress_bar(percent, loss)
-            test_model(model)
 
         # Report
         if (epoch + 1) % args.report_interval == 0:

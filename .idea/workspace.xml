@@ -12,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/pytorch_ntm$train.coverage" NAME="train Coverage Results" MODIFIED="1527877216824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_ntm$train.coverage" NAME="train Coverage Results" MODIFIED="1527877850369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -67,8 +67,8 @@
       <file leaf-file-name="train.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="129" column="33" lean-forward="false" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+            <state relative-caret-position="56">
+              <caret line="251" column="39" lean-forward="false" selection-start-line="251" selection-start-column="39" selection-end-line="251" selection-end-column="39" />
               <folding>
                 <element signature="n#!!doc" expanded="false" />
                 <element signature="e#107#122#0" expanded="true" />
@@ -83,14 +83,14 @@
                 <element signature="e#4932#4970#0" expanded="false" />
                 <element signature="e#5167#5338#0" expanded="false" />
                 <element signature="e#5207#5235#0" expanded="false" />
-                <element signature="e#6856#6945#0" expanded="false" />
-                <element signature="e#8165#8264#0" expanded="false" />
-                <element signature="e#8883#9422#0" expanded="false" />
-                <element signature="e#9002#9191#0" expanded="false" />
-                <element signature="e#9061#9137#0" expanded="false" />
-                <element signature="e#9289#9403#0" expanded="false" />
-                <element signature="e#9736#9864#0" expanded="false" />
-                <element signature="e#9892#9956#0" expanded="false" />
+                <element signature="e#6885#6974#0" expanded="false" />
+                <element signature="e#8194#8293#0" expanded="false" />
+                <element signature="e#8912#9451#0" expanded="false" />
+                <element signature="e#9031#9220#0" expanded="false" />
+                <element signature="e#9090#9166#0" expanded="false" />
+                <element signature="e#9318#9432#0" expanded="false" />
+                <element signature="e#9765#9893#0" expanded="false" />
+                <element signature="e#9921#9985#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -319,7 +319,7 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33109018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33109018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -575,8 +575,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="129" column="33" lean-forward="false" selection-start-line="129" selection-start-column="33" selection-end-line="129" selection-end-column="33" />
+        <state relative-caret-position="56">
+          <caret line="251" column="39" lean-forward="false" selection-start-line="251" selection-start-column="39" selection-end-line="251" selection-end-column="39" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
             <element signature="e#107#122#0" expanded="true" />
@@ -591,14 +591,14 @@
             <element signature="e#4932#4970#0" expanded="false" />
             <element signature="e#5167#5338#0" expanded="false" />
             <element signature="e#5207#5235#0" expanded="false" />
-            <element signature="e#6856#6945#0" expanded="false" />
-            <element signature="e#8165#8264#0" expanded="false" />
-            <element signature="e#8883#9422#0" expanded="false" />
-            <element signature="e#9002#9191#0" expanded="false" />
-            <element signature="e#9061#9137#0" expanded="false" />
-            <element signature="e#9289#9403#0" expanded="false" />
-            <element signature="e#9736#9864#0" expanded="false" />
-            <element signature="e#9892#9956#0" expanded="false" />
+            <element signature="e#6885#6974#0" expanded="false" />
+            <element signature="e#8194#8293#0" expanded="false" />
+            <element signature="e#8912#9451#0" expanded="false" />
+            <element signature="e#9031#9220#0" expanded="false" />
+            <element signature="e#9090#9166#0" expanded="false" />
+            <element signature="e#9318#9432#0" expanded="false" />
+            <element signature="e#9765#9893#0" expanded="false" />
+            <element signature="e#9921#9985#0" expanded="false" />
           </folding>
         </state>
       </provider>
