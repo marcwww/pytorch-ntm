@@ -15,7 +15,7 @@ import argcomplete
 import torch
 from torch.autograd import Variable
 import numpy as np
-from params import device
+import params
 
 
 LOGGER = logging.getLogger(__name__)
@@ -323,7 +323,8 @@ def main():
     # Initialize arguments
     args = init_arguments()
 
-    device = init_device(args.gpu)
+    params.device = init_device(args.gpu)
+    print(params.device)
 
     # Initialize random
     init_seed(args.seed)

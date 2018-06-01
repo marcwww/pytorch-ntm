@@ -9,6 +9,7 @@ from torch import optim
 from torch.nn import functional as F
 import numpy as np
 import os
+import params
 
 from ntm.aio import EncapsulatedNTM
 
@@ -32,6 +33,8 @@ def to_mtrx(seq,dim):
 
 def dataloader(batch_size,sequence_width,f):
 
+    print(params.device)
+
     lines = open(f, encoding='utf-8').read().strip().split('\n')
     pairs = [l.split('\t') for l in lines]
     pairs = list(random.sample(pairs, len(pairs)))
@@ -52,8 +55,8 @@ def dataloader(batch_size,sequence_width,f):
             padded_tar = \
                 [F.pad(seq, (0, 0, 0, mlen_tar - seq.shape[0])) for seq in batch_tar]
 
-            inp = torch.stack(padded_src, dim=1)
-            outp = torch.stack(padded_tar, dim=1)
+            inp = torch.stack(padded_src, dim=1).to(params.device)
+            outp = torch.stack(padded_tar, dim=1).to(params.device)
             batch_src.clear()
             batch_tar.clear()
 
@@ -136,7 +139,8 @@ class abcTaskModelTraining(object):
         net = EncapsulatedNTM(self.params.sequence_width, self.params.sequence_width,
                               self.params.controller_size, self.params.controller_layers,
                               self.params.num_heads,
-                              self.params.memory_n, self.params.memory_m)
+                              self.params.memory_n, self.params.memory_m)\
+                                .to(params.device)
         return net
 
     @dataloader_train.default
