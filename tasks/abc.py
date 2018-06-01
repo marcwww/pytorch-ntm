@@ -80,35 +80,7 @@ def load_data(batch_size,sequence_width,f):
 def dataloader(batch_size,sequence_width,f):
 
     data=list(load_data(batch_size,sequence_width,f))
-    for one_sample in data:
-        yield one_sample
-
-# Generator of randomized test sequences
-def dataloader_train(data):
-
-    for sample in data:
-        yield sample
-
-
-    # for batch_num in range(num_batches):
-    #
-    #     # All batches have the same sequence length
-    #     seq_len = random.randint(min_len, max_len)
-    #     seq = np.random.binomial(1, 0.5, (seq_len, batch_size, seq_width))
-    #     seq = Variable(torch.from_numpy(seq))
-    #
-    #     # The input includes an additional channel used for the delimiter
-    #     inp = Variable(torch.zeros(seq_len + 1, batch_size, seq_width + 1))
-    #     inp[:seq_len, :, :seq_width] = seq
-    #     inp[seq_len, :, seq_width] = 1.0 # delimiter in our control channel
-    #     outp = seq.clone()
-    #
-    #     yield batch_num+1, inp.float(), outp.float()
-
-def dataloader_valid(data):
-
-    for sample in data:
-        yield sample
+    return data
 
 @attrs
 class abcTaskParams(object):
@@ -170,7 +142,7 @@ class abcTaskModelTraining(object):
         data = load_data(self.params.batch_size,
                          self.params.sequence_width,
                          self.params.ftrain)
-        return dataloader_train(data)
+        return data
 
     @dataloader_valid.default
     def default_dataloader_valid(self):
@@ -178,7 +150,7 @@ class abcTaskModelTraining(object):
         data = load_data(self.params.batch_size,
                          self.params.sequence_width,
                          self.params.fvalid)
-        return dataloader_valid(data)
+        return data
 
     @criterion.default
     def default_criterion(self):
