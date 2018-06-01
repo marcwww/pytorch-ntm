@@ -152,6 +152,7 @@ def train_batch(net, embs, hid2out, vocb, criterion, optimizer, X, Y):
     net.init_sequence(batch_size)
 
     # (seq_len, bsz, embsz)
+    embs.to(params.device)
     embs_inp=embs(X)
 
     # Feed the sequence + delimiter

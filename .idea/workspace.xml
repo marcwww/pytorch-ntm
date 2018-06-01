@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="15ff7ecf-a83a-47af-b041-1c77bbc1f471" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/tasks/abc_embd.py" afterPath="$PROJECT_DIR$/tasks/abc_embd.py" />
+      <change beforePath="$PROJECT_DIR$/train.py" afterPath="$PROJECT_DIR$/train.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/pytorch_ntm$train.coverage" NAME="train Coverage Results" MODIFIED="1527876922015" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_ntm$train.coverage" NAME="train Coverage Results" MODIFIED="1527877004148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -64,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="train.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="153" column="27" lean-forward="true" selection-start-line="153" selection-start-column="27" selection-end-line="153" selection-end-column="27" />
+            <state relative-caret-position="215">
+              <caret line="154" column="25" lean-forward="false" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
               <folding>
                 <element signature="n#!!doc" expanded="false" />
                 <element signature="e#107#122#0" expanded="true" />
@@ -77,20 +78,20 @@
                 <element signature="e#1393#1467#0" expanded="false" />
                 <element signature="e#1512#1709#0" expanded="false" />
                 <element signature="e#2464#2649#0" expanded="false" />
-                <element signature="e#4361#5315#0" expanded="false" />
-                <element signature="e#4630#4676#0" expanded="false" />
-                <element signature="e#4803#4852#0" expanded="false" />
-                <element signature="e#4890#4928#0" expanded="false" />
-                <element signature="e#5125#5296#0" expanded="false" />
-                <element signature="e#5165#5193#0" expanded="false" />
-                <element signature="e#6784#6873#0" expanded="false" />
-                <element signature="e#8093#8192#0" expanded="false" />
-                <element signature="e#8811#9350#0" expanded="false" />
-                <element signature="e#8930#9119#0" expanded="false" />
-                <element signature="e#8989#9065#0" expanded="false" />
-                <element signature="e#9217#9331#0" expanded="false" />
-                <element signature="e#9664#9792#0" expanded="false" />
-                <element signature="e#9820#9884#0" expanded="false" />
+                <element signature="e#4388#5342#0" expanded="false" />
+                <element signature="e#4657#4703#0" expanded="false" />
+                <element signature="e#4830#4879#0" expanded="false" />
+                <element signature="e#4917#4955#0" expanded="false" />
+                <element signature="e#5152#5323#0" expanded="false" />
+                <element signature="e#5192#5220#0" expanded="false" />
+                <element signature="e#6811#6900#0" expanded="false" />
+                <element signature="e#8120#8219#0" expanded="false" />
+                <element signature="e#8838#9377#0" expanded="false" />
+                <element signature="e#8957#9146#0" expanded="false" />
+                <element signature="e#9016#9092#0" expanded="false" />
+                <element signature="e#9244#9358#0" expanded="false" />
+                <element signature="e#9691#9819#0" expanded="false" />
+                <element signature="e#9847#9911#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -118,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="abc_embd.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="abc_embd.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/abc_embd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+            <state relative-caret-position="239">
+              <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
               </folding>
@@ -184,8 +185,8 @@
         <option value="$PROJECT_DIR$/ntm/aio.py" />
         <option value="$PROJECT_DIR$/tasks/abc.py" />
         <option value="$PROJECT_DIR$/tasks/abc_01.py" />
-        <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/tasks/abc_embd.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
@@ -563,10 +564,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/abc_embd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+          <folding>
+            <element signature="e#27#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="153" column="27" lean-forward="true" selection-start-line="153" selection-start-column="27" selection-end-line="153" selection-end-column="27" />
+        <state relative-caret-position="215">
+          <caret line="154" column="25" lean-forward="false" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
             <element signature="e#107#122#0" expanded="true" />
@@ -575,30 +586,20 @@
             <element signature="e#1393#1467#0" expanded="false" />
             <element signature="e#1512#1709#0" expanded="false" />
             <element signature="e#2464#2649#0" expanded="false" />
-            <element signature="e#4361#5315#0" expanded="false" />
-            <element signature="e#4630#4676#0" expanded="false" />
-            <element signature="e#4803#4852#0" expanded="false" />
-            <element signature="e#4890#4928#0" expanded="false" />
-            <element signature="e#5125#5296#0" expanded="false" />
-            <element signature="e#5165#5193#0" expanded="false" />
-            <element signature="e#6784#6873#0" expanded="false" />
-            <element signature="e#8093#8192#0" expanded="false" />
-            <element signature="e#8811#9350#0" expanded="false" />
-            <element signature="e#8930#9119#0" expanded="false" />
-            <element signature="e#8989#9065#0" expanded="false" />
-            <element signature="e#9217#9331#0" expanded="false" />
-            <element signature="e#9664#9792#0" expanded="false" />
-            <element signature="e#9820#9884#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/abc_embd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding>
-            <element signature="e#27#40#0" expanded="true" />
+            <element signature="e#4388#5342#0" expanded="false" />
+            <element signature="e#4657#4703#0" expanded="false" />
+            <element signature="e#4830#4879#0" expanded="false" />
+            <element signature="e#4917#4955#0" expanded="false" />
+            <element signature="e#5152#5323#0" expanded="false" />
+            <element signature="e#5192#5220#0" expanded="false" />
+            <element signature="e#6811#6900#0" expanded="false" />
+            <element signature="e#8120#8219#0" expanded="false" />
+            <element signature="e#8838#9377#0" expanded="false" />
+            <element signature="e#8957#9146#0" expanded="false" />
+            <element signature="e#9016#9092#0" expanded="false" />
+            <element signature="e#9244#9358#0" expanded="false" />
+            <element signature="e#9691#9819#0" expanded="false" />
+            <element signature="e#9847#9911#0" expanded="false" />
           </folding>
         </state>
       </provider>
