@@ -45,7 +45,10 @@ def dataloader(batch_size,sequence_width,f):
         p = pairs[i]
         seq_src, seq_tar = p[0], p[1]
         batch_src.append(to_mtrx(seq_src, dim=sequence_width))
-        batch_tar.append(to_mtrx(seq_tar+EOS, dim=sequence_width))
+
+        # due to the delimiter to be appended, the EOS is omitted
+        batch_tar.append(to_mtrx(seq_tar, dim=sequence_width))
+        # batch_tar.append(to_mtrx(seq_tar+EOS, dim=sequence_width))
 
         if (i + 1) % batch_size == 0:
             mlen_src = max([seq.shape[0] for seq in batch_src])
