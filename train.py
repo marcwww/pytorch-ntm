@@ -15,6 +15,7 @@ import argcomplete
 import torch
 from torch.autograd import Variable
 import numpy as np
+from params import device
 
 
 LOGGER = logging.getLogger(__name__)
@@ -264,7 +265,7 @@ def init_arguments():
     parser.add_argument('--report-interval', type=int, default=REPORT_INTERVAL,
                         help="Reporting interval")
     parser.add_argument('-gpu', type=int, default=0,
-                   help='gpu index(if could be used)')
+                   help='gpu index (if could be used)')
 
     argcomplete.autocomplete(parser)
 
@@ -313,12 +314,16 @@ def init_logging():
     logging.basicConfig(format='[%(asctime)s] [%(levelname)s] [%(name)s]  %(message)s',
                         level=logging.DEBUG)
 
+def init_device(gpu):
+    return torch.device(gpu if torch.cuda.is_available() else 'cpu')
 
 def main():
     init_logging()
 
     # Initialize arguments
     args = init_arguments()
+
+    device = init_device(args.gpu)
 
     # Initialize random
     init_seed(args.seed)
