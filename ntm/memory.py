@@ -4,7 +4,7 @@ from torch.autograd import Variable
 import torch.nn.functional as F
 from torch import nn
 import numpy as np
-
+import params
 
 def _convolve(w, s):
     """Circular convolution implementation."""
@@ -89,7 +89,7 @@ class NTMMemory(nn.Module):
         return g * wc + (1 - g) * w_prev
 
     def _shift(self, wg, s):
-        result = Variable(torch.zeros(wg.size()))
+        result = Variable(torch.zeros(wg.size())).to(params.device)
         for b in range(self.batch_size):
             result[b] = _convolve(wg[b], s[b])
         return result
