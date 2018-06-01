@@ -75,7 +75,7 @@ def dataloader(batch_size,sequence_width,f):
             batch_src.clear()
             batch_tar.clear()
 
-            yield (i+1.0)*batch_size/len(lines),\
+            yield (i+1.0)/len(lines),\
                   inp.to(params.device), \
                   outp.to(params.device)
 
