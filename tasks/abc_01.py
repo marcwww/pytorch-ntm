@@ -40,6 +40,7 @@ def load_data(batch_size,sequence_width,f):
     pairs = list(random.sample(pairs, len(pairs)))
     batch_src = []
     batch_tar = []
+    res=[]
     for i in range(len(pairs)):
         p = pairs[i]
         seq_src, seq_tar = p[0], p[1]
@@ -73,13 +74,15 @@ def load_data(batch_size,sequence_width,f):
             batch_src.clear()
             batch_tar.clear()
 
-            yield (i + 1.0) / len(lines), \
-                  inp.to(params.device), \
-                  outp.to(params.device)
+            res.append(((i + 1.0) / len(lines),
+                        inp.to(params.device),
+                        outp.to(params.device)))
+
+    return res
 
 def dataloader(batch_size,sequence_width,f):
 
-    data=list(load_data(batch_size,sequence_width,f))
+    data=load_data(batch_size,sequence_width,f)
     return data
 
 @attrs

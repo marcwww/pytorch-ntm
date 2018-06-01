@@ -14,6 +14,7 @@ import attr
 import argcomplete
 import torch
 from torch.autograd import Variable
+import torch.nn.functional as F
 import numpy as np
 import params
 
@@ -23,12 +24,16 @@ LOGGER = logging.getLogger(__name__)
 
 from tasks.copytask import CopyTaskModelTraining, CopyTaskParams
 from tasks.repeatcopytask import RepeatCopyTaskModelTraining, RepeatCopyTaskParams
-from tasks.abc import abcTaskModelTraining, abcTaskParams
+import tasks.abc_01
+import tasks.abc_embd
+
 
 TASKS = {
     'copy': (CopyTaskModelTraining, CopyTaskParams),
     'repeat-copy': (RepeatCopyTaskModelTraining, RepeatCopyTaskParams),
-    'abc': (abcTaskModelTraining, abcTaskParams)
+    'abc_01': (tasks.abc_01.abcTaskModelTraining, tasks.abc_01.abcTaskParams),
+    'abc_embd': (tasks.abc_embd.abcTaskModelTraining,tasks.abc_embd.abcTaskParams)
+
 }
 
 
@@ -36,6 +41,10 @@ TASKS = {
 RANDOM_SEED = 1000
 REPORT_INTERVAL = 2
 CHECKPOINT_INTERVAL = 10
+SOS=0
+EOS=1
+PAD=2
+
 
 
 def get_ms():
@@ -83,7 +92,8 @@ def save_checkpoint(net, name, args, epoch, losses, valid_accur, seq_lengths):
         "valid_accur": valid_accur,
         "seq_lengths": seq_lengths
     }
-    open(train_fname, 'wt').write(json.dumps(content))
+    # open(train_fname, 'wt').write(json.dumps(content))
+    open(train_fname, 'wt').write(str(content))
 
 
 def clip_grads(net):
@@ -92,68 +102,75 @@ def clip_grads(net):
     for p in parameters:
         p.grad.data.clamp_(-10, 10)
 
-def test_batch(net, X, Y):
-    # with torch.no_grad():
-    inp_seq_len = X.size(0)
-    outp_seq_len, batch_size, _ = Y.size()
+def test_batch(net, embs, hid2out, X, Y):
+
+    outp_seq_len, batch_size = Y.size()
 
     # New sequence
     net.init_sequence(batch_size)
 
+    # (seq_len, bsz, embsz)
+    embs_inp = embs(X)
+
     # Feed the sequence + delimiter
-    for i in range(inp_seq_len):
-        net(X[i])
+    for input in embs_inp:
+        net(input)
 
     # Read the output (no input given)
-    y_out = Variable(torch.zeros(Y.size()))
+    outputs = []
     for i in range(outp_seq_len):
-        y_out[i], _ = net()
+        hid, _ = net()
+        output = F.log_softmax(hid2out(hid))
+        top1=output.data.max(1)[1]
+        # (bsz, 1)
+        top1=top1.unsqueeze(1)
+        outputs.append(top1)
 
-    y_out_binarized = y_out.clone().data
-    y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
+    # (seq_len, bsz)
+    outputs = torch.stack(outputs,dim=1)
 
-    ncorrect=0
-    ntotal=0
-    Y=Y.cpu()
-    for i in range(batch_size):
-        cost=torch.sum(torch.abs(y_out_binarized[:,i,:]-Y.data[:,i,:]))
-        if cost==0:
-            ncorrect+=1
+    ncorrect = 0
+    ntotal = 0
+    for seq_i in range(batch_size):
+        for w_i in range(outp_seq_len):
+            if outputs[w_i,seq_i]!=Y[w_i,seq_i]:
+                break
+            if outputs[w_i,seq_i]==EOS and Y[w_i,seq_i]==EOS:
+                ncorrect+=1
+                break
         ntotal+=1
 
     return ncorrect, ntotal
 
 
-def train_batch(net, criterion, optimizer, X, Y):
+def train_batch(net, embs, hid2out, vocb, criterion, optimizer, X, Y):
     """Trains a single batch."""
     optimizer.zero_grad()
-    inp_seq_len = X.size(0)
-    outp_seq_len, batch_size, _ = Y.size()
+    outp_seq_len, batch_size = Y.size()
 
     # New sequence
     net.init_sequence(batch_size)
 
+    # (seq_len, bsz, embsz)
+    embs_inp=embs(X)
+
     # Feed the sequence + delimiter
-    for i in range(inp_seq_len):
-        net(X[i])
+    for input in embs_inp:
+        net(input)
 
     # Read the output (no input given)
-    y_out = Variable(torch.zeros(Y.size())).to(params.device)
+    outputs=[]
     for i in range(outp_seq_len):
-        y_out[i], _ = net()
+        hid, _ = net()
+        output=F.log_softmax(hid2out(hid))
+        outputs.append(output)
 
-    loss = criterion(y_out, Y)
+    outputs=torch.stack(outputs).view(-1,vocb)
+    loss = criterion(outputs, Y.view(-1))
     loss.backward()
     clip_grads(net)
     optimizer.step()
 
-    # y_out_binarized = y_out.clone().data.cpu()
-    # y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
-
-    # The cost is the number of error bits per sequence
-    # cost = torch.sum(torch.abs(y_out_binarized - Y.data.cpu()))
-
-    # return loss.data[0], cost / batch_size
     return loss.data[0]
 
 
@@ -199,7 +216,7 @@ def test_model(model):
     nc = 0
     nt = 0.0
     for batch_num, x, y in model.dataloader_valid:
-        dnc, dnt = test_batch(model.net, x, y)
+        dnc, dnt = test_batch(model.net,model.embs,model.hid2out,x,y)
         nc += dnc
         nt += dnt
     valid_accur = nc / nt
@@ -220,7 +237,8 @@ def train_model(model, args):
     for epoch in range(model.params.epoches):
         for percent, x, y in model.dataloader_train:
             # loss, cost = train_batch(model.net, model.criterion, model.optimizer, x, y)
-            loss = train_batch(model.net, model.criterion, model.optimizer, x, y)
+            loss = train_batch(model.net, model.embs, model.hid2out, model.vocb,
+                               model.criterion, model.optimizer, x, y)
 
             losses += [loss]
             # costs += [cost]
@@ -256,7 +274,7 @@ def train_model(model, args):
 def init_arguments():
     parser = argparse.ArgumentParser(prog='train.py')
     parser.add_argument('--seed', type=int, default=RANDOM_SEED, help="Seed value for RNGs")
-    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='abc',
+    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='abc_embd',
                         help="Choose the task to train (default: copy)")
     parser.add_argument('-p', '--param', action='append', default=[],
                         help='Override model params. Example: "-pbatch_size=4 -pnum_heads=2"')
