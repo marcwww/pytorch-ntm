@@ -138,7 +138,7 @@ def train_batch(net, criterion, optimizer, X, Y):
         net(X[i])
 
     # Read the output (no input given)
-    y_out = Variable(torch.zeros(Y.size()))
+    y_out = Variable(torch.zeros(Y.size())).to(params.device)
     for i in range(outp_seq_len):
         y_out[i], _ = net()
 
