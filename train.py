@@ -127,7 +127,7 @@ def test_batch(net, embs, hid2out, X, Y):
         outputs.append(top1)
 
     # (seq_len, bsz)
-    outputs = torch.stack(outputs,dim=1).unsqueeze(2)
+    outputs = torch.stack(outputs,dim=1)
 
     ncorrect = 0
     ntotal = 0
