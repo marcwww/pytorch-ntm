@@ -163,6 +163,7 @@ def train_batch(net, embs, hid2out, vocb, criterion, optimizer, X, Y):
     outputs=[]
     for i in range(outp_seq_len):
         hid, _ = net()
+        hid2out.to(params.device)
         output=F.log_softmax(hid2out(hid))
         outputs.append(output)
 
