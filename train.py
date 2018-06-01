@@ -62,7 +62,7 @@ def progress_clean():
 def progress_bar(percent, last_loss):
     """Prints the progress until the next report."""
     fill = int(percent * 40)
-    print("\r[{}{}]: {} (Loss: {:.4f})".format(
+    print("\r[{}{}]: {:.4f} (Loss: {:.4f})".format(
         "=" * fill, " " * (40 - fill), percent, last_loss), end='')
 
 

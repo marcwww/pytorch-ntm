@@ -31,8 +31,7 @@ def to_mtrx(seq,dim):
     mtrx=torch.stack([to_vec(w,dim) for w in seq])
     return mtrx
 
-def dataloader(batch_size,sequence_width,f):
-
+def load_data(batch_size,sequence_width,f):
     print(params.device)
     # sequence_width=sequence_width-1
 
@@ -62,22 +61,28 @@ def dataloader(batch_size,sequence_width,f):
             # inp, outp : (seq_len, bsz, dim)
             seqs_inp = torch.stack(padded_src, dim=1)
             seqs_outp = torch.stack(padded_tar, dim=1)
-            inp = Variable(torch.zeros(mlen_src+1, batch_size, sequence_width+1))
-            outp = Variable(torch.zeros(mlen_tar+1, batch_size, sequence_width+1))
-            inp[:mlen_src,:,:sequence_width] = seqs_inp
-            outp[:mlen_tar,:,:sequence_width] = seqs_outp
+            inp = Variable(torch.zeros(mlen_src + 1, batch_size, sequence_width + 1))
+            outp = Variable(torch.zeros(mlen_tar + 1, batch_size, sequence_width + 1))
+            inp[:mlen_src, :, :sequence_width] = seqs_inp
+            outp[:mlen_tar, :, :sequence_width] = seqs_outp
 
             # delimiter
             inp[mlen_src, :, sequence_width] = 1.0
             outp[mlen_tar, :, sequence_width] = 1.0
 
-
             batch_src.clear()
             batch_tar.clear()
 
-            yield (i+1.0)/len(lines),\
+            yield (i + 1.0) / len(lines), \
                   inp.to(params.device), \
                   outp.to(params.device)
+
+def dataloader(batch_size,sequence_width,f):
+
+    data=list(load_data(batch_size,sequence_width,f))
+    for one_sample in data:
+        yield one_sample
+
 
 
 # Generator of randomized test sequences
