@@ -203,6 +203,7 @@ def test_model(model):
         nc += dnc
         nt += dnt
     valid_accur = nc / nt
+    model.dataloader_valid.reset()
 
     return valid_accur
 
@@ -228,6 +229,8 @@ def train_model(model, args):
 
             # Update the progress bar
             progress_bar(percent, loss)
+
+        model.dataloader_train.reset()
 
         # Report
         if (epoch + 1) % args.report_interval == 0:
