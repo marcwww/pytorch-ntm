@@ -216,7 +216,6 @@ def train_model(model, args):
     costs = []
     seq_lengths = []
     start_ms = get_ms()
-    num=len(model.dataloader_train)/batch_size
     for epoch in range(model.params.epoches):
         for percent, x, y in model.dataloader_train:
             loss, cost = train_batch(model.net, model.criterion, model.optimizer, x, y)
@@ -228,24 +227,24 @@ def train_model(model, args):
             # Update the progress bar
             progress_bar(percent, loss)
 
-            # Report
-            if (epoch+1) % args.report_interval == 0:
-                mean_loss = np.array(losses[-args.report_interval:]).mean()
-                mean_cost = np.array(costs[-args.report_interval:]).mean()
-                mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
-                valid_accur = test_model(model)
-                progress_clean()
+        # Report
+        if (epoch + 1) % args.report_interval == 0:
+            mean_loss = np.array(losses[-args.report_interval:]).mean()
+            mean_cost = np.array(costs[-args.report_interval:]).mean()
+            mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
+            valid_accur = test_model(model)
+            progress_clean()
 
-                LOGGER.info("Epoch %d Loss: %.6f Cost: %.2f Valid Accuracy: %.2f Time: %d ms/sequence",
-                            epoch, mean_loss, mean_cost, valid_accur, mean_time)
-                start_ms = get_ms()
+            LOGGER.info("Epoch %d Loss: %.6f Cost: %.2f Valid Accuracy: %.2f Time: %d ms/sequence",
+                        epoch, mean_loss, mean_cost, valid_accur, mean_time)
+            start_ms = get_ms()
 
-            # Checkpoint
-            if (args.checkpoint_interval != 0) and ((epoch+1) % args.checkpoint_interval == 0):
-                valid_accur = test_model(model)
+        # Checkpoint
+        if (args.checkpoint_interval != 0) and ((epoch + 1) % args.checkpoint_interval == 0):
+            valid_accur = test_model(model)
 
-                save_checkpoint(model.net, model.params.name, args,
-                                epoch, losses, costs, valid_accur, seq_lengths)
+            save_checkpoint(model.net, model.params.name, args,
+                            epoch, losses, costs, valid_accur, seq_lengths)
 
     LOGGER.info("Done training.")
 
