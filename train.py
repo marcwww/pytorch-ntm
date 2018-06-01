@@ -248,6 +248,7 @@ def train_model(model, args):
 
             # Update the progress bar
             progress_bar(percent, loss)
+            test_model(model)
 
         # Report
         if (epoch + 1) % args.report_interval == 0:
