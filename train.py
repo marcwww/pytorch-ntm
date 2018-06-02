@@ -132,6 +132,7 @@ def test_batch(net, embs, hid2out, X, Y):
     ncorrect = 0
     ntotal = 0
     for seq_i in range(batch_size):
+        print(outputs[:,seq_i].data,Y[:,seq_i].data)
         for w_i in range(outp_seq_len):
             if outputs[w_i,seq_i]!=Y[w_i,seq_i]:
                 break
@@ -169,6 +170,7 @@ def train_batch(net, embs, hid2out, vocb, criterion, optimizer, X, Y):
 
     outputs=torch.stack(outputs).view(-1,vocb)
     loss = criterion(outputs, Y.view(-1))
+
     loss.backward()
     clip_grads(net)
     optimizer.step()
