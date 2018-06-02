@@ -48,11 +48,11 @@ def load_data(batch_size,sequence_width,f):
     res=[]
     for i in range(len(pairs)):
         p = pairs[i]
-        seq_src, seq_tar = p[0], p[1]
-        batch_src.append(to_tensor(seq_src+'<EOS>'))
+        seq_src, seq_tar = p[0].split(' '), p[1].split(' ')
+        batch_src.append(to_tensor(seq_src+['<EOS>']))
 
         # due to the delimiter to be appended, the EOS is omitted
-        batch_tar.append(to_tensor('<SOS>'+seq_tar+'<EOS>'))
+        batch_tar.append(to_tensor(['<SOS>']+seq_tar+['<EOS>']))
         # batch_tar.append(to_mtrx(seq_tar+EOS, dim=sequence_width))
 
         if (i + 1) % batch_size == 0:
