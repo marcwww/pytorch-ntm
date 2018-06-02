@@ -262,7 +262,7 @@ def train_model(model, args):
         if (epoch + 1) % args.report_interval == 0:
             mean_loss = np.array(losses[-args.report_interval:]).mean()
             # mean_cost = np.array(costs[-args.report_interval:]).mean()
-            mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
+            mean_time = int(((get_ms() - start_ms) / args.report_interval) / len(model.dataloader_train))
             valid_accur = test_model(model)
             progress_clean()
 
