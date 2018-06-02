@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15ff7ecf-a83a-47af-b041-1c77bbc1f471" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/tasks/abc_embd.py" afterPath="$PROJECT_DIR$/tasks/abc_embd.py" />
       <change beforePath="$PROJECT_DIR$/train.py" afterPath="$PROJECT_DIR$/train.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="train.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1594">
-              <caret line="134" column="14" lean-forward="true" selection-start-line="134" selection-start-column="14" selection-end-line="134" selection-end-column="14" />
+            <state relative-caret-position="379">
+              <caret line="141" column="51" lean-forward="false" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
               <folding>
                 <element signature="n#!!doc" expanded="false" />
                 <element signature="e#107#122#0" expanded="true" />
@@ -78,20 +77,20 @@
                 <element signature="e#1393#1467#0" expanded="false" />
                 <element signature="e#1512#1709#0" expanded="false" />
                 <element signature="e#2464#2649#0" expanded="false" />
-                <element signature="e#4457#5411#0" expanded="false" />
-                <element signature="e#4726#4772#0" expanded="false" />
-                <element signature="e#4899#4948#0" expanded="false" />
-                <element signature="e#4986#5024#0" expanded="false" />
-                <element signature="e#5221#5392#0" expanded="false" />
-                <element signature="e#5261#5289#0" expanded="false" />
-                <element signature="e#6939#7028#0" expanded="false" />
-                <element signature="e#8248#8347#0" expanded="false" />
-                <element signature="e#8966#9505#0" expanded="false" />
-                <element signature="e#9085#9274#0" expanded="false" />
-                <element signature="e#9144#9220#0" expanded="false" />
-                <element signature="e#9372#9486#0" expanded="false" />
-                <element signature="e#9819#9947#0" expanded="false" />
-                <element signature="e#9975#10039#0" expanded="false" />
+                <element signature="e#4661#5615#0" expanded="false" />
+                <element signature="e#4930#4976#0" expanded="false" />
+                <element signature="e#5103#5152#0" expanded="false" />
+                <element signature="e#5190#5228#0" expanded="false" />
+                <element signature="e#5425#5596#0" expanded="false" />
+                <element signature="e#5465#5493#0" expanded="false" />
+                <element signature="e#7143#7232#0" expanded="false" />
+                <element signature="e#8452#8551#0" expanded="false" />
+                <element signature="e#9170#9709#0" expanded="false" />
+                <element signature="e#9289#9478#0" expanded="false" />
+                <element signature="e#9348#9424#0" expanded="false" />
+                <element signature="e#9576#9690#0" expanded="false" />
+                <element signature="e#10023#10151#0" expanded="false" />
+                <element signature="e#10179#10243#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -119,10 +118,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="abc_embd.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="abc_embd.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/abc_embd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
+            <state relative-caret-position="359">
               <caret line="103" column="47" lean-forward="false" selection-start-line="103" selection-start-column="47" selection-end-line="103" selection-end-column="47" />
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
@@ -185,8 +184,8 @@
         <option value="$PROJECT_DIR$/ntm/aio.py" />
         <option value="$PROJECT_DIR$/tasks/abc.py" />
         <option value="$PROJECT_DIR$/tasks/abc_01.py" />
-        <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/tasks/abc_embd.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
@@ -315,7 +314,7 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33109018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33109018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -559,10 +558,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/abc_embd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="103" column="47" lean-forward="false" selection-start-line="103" selection-start-column="47" selection-end-line="103" selection-end-column="47" />
+          <folding>
+            <element signature="e#27#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1594">
-          <caret line="134" column="14" lean-forward="true" selection-start-line="134" selection-start-column="14" selection-end-line="134" selection-end-column="14" />
+        <state relative-caret-position="379">
+          <caret line="141" column="51" lean-forward="false" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
             <element signature="e#107#122#0" expanded="true" />
@@ -571,30 +580,20 @@
             <element signature="e#1393#1467#0" expanded="false" />
             <element signature="e#1512#1709#0" expanded="false" />
             <element signature="e#2464#2649#0" expanded="false" />
-            <element signature="e#4457#5411#0" expanded="false" />
-            <element signature="e#4726#4772#0" expanded="false" />
-            <element signature="e#4899#4948#0" expanded="false" />
-            <element signature="e#4986#5024#0" expanded="false" />
-            <element signature="e#5221#5392#0" expanded="false" />
-            <element signature="e#5261#5289#0" expanded="false" />
-            <element signature="e#6939#7028#0" expanded="false" />
-            <element signature="e#8248#8347#0" expanded="false" />
-            <element signature="e#8966#9505#0" expanded="false" />
-            <element signature="e#9085#9274#0" expanded="false" />
-            <element signature="e#9144#9220#0" expanded="false" />
-            <element signature="e#9372#9486#0" expanded="false" />
-            <element signature="e#9819#9947#0" expanded="false" />
-            <element signature="e#9975#10039#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/abc_embd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="103" column="47" lean-forward="false" selection-start-line="103" selection-start-column="47" selection-end-line="103" selection-end-column="47" />
-          <folding>
-            <element signature="e#27#40#0" expanded="true" />
+            <element signature="e#4661#5615#0" expanded="false" />
+            <element signature="e#4930#4976#0" expanded="false" />
+            <element signature="e#5103#5152#0" expanded="false" />
+            <element signature="e#5190#5228#0" expanded="false" />
+            <element signature="e#5425#5596#0" expanded="false" />
+            <element signature="e#5465#5493#0" expanded="false" />
+            <element signature="e#7143#7232#0" expanded="false" />
+            <element signature="e#8452#8551#0" expanded="false" />
+            <element signature="e#9170#9709#0" expanded="false" />
+            <element signature="e#9289#9478#0" expanded="false" />
+            <element signature="e#9348#9424#0" expanded="false" />
+            <element signature="e#9576#9690#0" expanded="false" />
+            <element signature="e#10023#10151#0" expanded="false" />
+            <element signature="e#10179#10243#0" expanded="false" />
           </folding>
         </state>
       </provider>

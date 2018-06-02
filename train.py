@@ -132,11 +132,14 @@ def test_batch(net, embs, hid2out, X, Y):
     ncorrect = 0
     ntotal = 0
     for seq_i in range(batch_size):
-        print(outputs[:,seq_i].data,Y[:,seq_i].data)
         for w_i in range(outp_seq_len):
             if outputs[w_i,seq_i]!=Y[w_i,seq_i]:
+                print('break: ',list(outputs[:w_i+1,seq_i].numpy()),
+                                list(Y[:w_i,seq_i].numpy()))
                 break
             if outputs[w_i,seq_i]==EOS and Y[w_i,seq_i]==EOS:
+                print('correct: ', list(outputs[:w_i + 1, seq_i].numpy()),
+                      list(Y[:w_i, seq_i].numpy()))
                 ncorrect+=1
                 break
         ntotal+=1
