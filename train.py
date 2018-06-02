@@ -132,6 +132,7 @@ def test_batch(net, embs, hid2out, X, Y):
     ncorrect = 0
     ntotal = 0
     outputs=outputs.cpu()
+    Y=Y.cpu()
     for seq_i in range(batch_size):
         for w_i in range(outp_seq_len):
             if outputs[w_i,seq_i]!=Y[w_i,seq_i]:
