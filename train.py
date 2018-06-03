@@ -38,7 +38,7 @@ TASKS = {
 
 
 # Default values for program arguments
-RANDOM_SEED = 1000
+RANDOM_SEED = 10
 REPORT_INTERVAL = 2
 CHECKPOINT_INTERVAL = 10
 SOS=0

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15ff7ecf-a83a-47af-b041-1c77bbc1f471" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/tasks/copytask.py" afterPath="$PROJECT_DIR$/tasks/copytask.py" />
+      <change beforePath="$PROJECT_DIR$/train.py" afterPath="$PROJECT_DIR$/train.py" />
       <change beforePath="$PROJECT_DIR$/train_ori.py" afterPath="$PROJECT_DIR$/train_ori.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="copytask.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="copytask.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5">
-              <caret line="88" column="8" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+            <state relative-caret-position="324">
+              <caret line="63" column="35" lean-forward="false" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
               </folding>
@@ -54,27 +56,27 @@
       <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5">
-              <caret line="158" column="0" lean-forward="true" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+            <state relative-caret-position="-2719">
+              <caret line="40" column="16" lean-forward="true" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
               <folding>
                 <element signature="n#!!doc" expanded="false" />
                 <element signature="e#107#122#0" expanded="true" />
-                <element signature="e#1020#1096#0" expanded="false" />
-                <element signature="e#1129#1364#0" expanded="false" />
-                <element signature="e#1393#1467#0" expanded="false" />
-                <element signature="e#1512#1709#0" expanded="false" />
-                <element signature="e#2877#4058#0" expanded="false" />
-                <element signature="e#4897#5851#0" expanded="false" />
-                <element signature="e#5166#5212#0" expanded="false" />
-                <element signature="e#5339#5388#0" expanded="false" />
-                <element signature="e#5426#5464#0" expanded="false" />
-                <element signature="e#5661#5832#0" expanded="false" />
-                <element signature="e#5701#5729#0" expanded="false" />
-                <element signature="e#9423#9962#0" expanded="false" />
-                <element signature="e#9542#9731#0" expanded="false" />
-                <element signature="e#9601#9677#0" expanded="false" />
-                <element signature="e#9829#9943#0" expanded="false" />
-                <element signature="e#10276#10404#0" expanded="false" />
+                <element signature="e#1018#1094#0" expanded="false" />
+                <element signature="e#1127#1362#0" expanded="false" />
+                <element signature="e#1391#1465#0" expanded="false" />
+                <element signature="e#1510#1707#0" expanded="false" />
+                <element signature="e#2875#4056#0" expanded="false" />
+                <element signature="e#4895#5849#0" expanded="false" />
+                <element signature="e#5164#5210#0" expanded="false" />
+                <element signature="e#5337#5386#0" expanded="false" />
+                <element signature="e#5424#5462#0" expanded="false" />
+                <element signature="e#5659#5830#0" expanded="false" />
+                <element signature="e#5699#5727#0" expanded="false" />
+                <element signature="e#9421#9960#0" expanded="false" />
+                <element signature="e#9540#9729#0" expanded="false" />
+                <element signature="e#9599#9675#0" expanded="false" />
+                <element signature="e#9827#9941#0" expanded="false" />
+                <element signature="e#10274#10402#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -90,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_ori.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="train_ori.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_ori.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="196" column="100" lean-forward="false" selection-start-line="196" selection-start-column="100" selection-end-line="196" selection-end-column="100" />
+            <state relative-caret-position="-3439">
+              <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
               <folding>
                 <element signature="e#107#122#0" expanded="true" />
               </folding>
@@ -172,10 +174,10 @@
         <option value="$PROJECT_DIR$/tasks/abc.py" />
         <option value="$PROJECT_DIR$/tasks/abc_01.py" />
         <option value="$PROJECT_DIR$/tasks/abc_embd.py" />
-        <option value="$PROJECT_DIR$/train.py" />
-        <option value="$PROJECT_DIR$/tasks/copytask.py" />
         <option value="$PROJECT_DIR$/tasks/repeatcopytask.py" />
         <option value="$PROJECT_DIR$/train_ori.py" />
+        <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/tasks/copytask.py" />
       </list>
     </option>
   </component>
@@ -322,7 +324,7 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39300135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25168237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -560,48 +562,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="158" column="0" lean-forward="true" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#107#122#0" expanded="true" />
-            <element signature="e#1020#1096#0" expanded="false" />
-            <element signature="e#1129#1364#0" expanded="false" />
-            <element signature="e#1393#1467#0" expanded="false" />
-            <element signature="e#1512#1709#0" expanded="false" />
-            <element signature="e#2877#4058#0" expanded="false" />
-            <element signature="e#4897#5851#0" expanded="false" />
-            <element signature="e#5166#5212#0" expanded="false" />
-            <element signature="e#5339#5388#0" expanded="false" />
-            <element signature="e#5426#5464#0" expanded="false" />
-            <element signature="e#5661#5832#0" expanded="false" />
-            <element signature="e#5701#5729#0" expanded="false" />
-            <element signature="e#9423#9962#0" expanded="false" />
-            <element signature="e#9542#9731#0" expanded="false" />
-            <element signature="e#9601#9677#0" expanded="false" />
-            <element signature="e#9829#9943#0" expanded="false" />
-            <element signature="e#10276#10404#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/copy-task-1000-batch-1000.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="88" column="8" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
-          <folding>
-            <element signature="e#27#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -615,12 +580,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2719">
+          <caret line="40" column="16" lean-forward="true" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#107#122#0" expanded="true" />
+            <element signature="e#1018#1094#0" expanded="false" />
+            <element signature="e#1127#1362#0" expanded="false" />
+            <element signature="e#1391#1465#0" expanded="false" />
+            <element signature="e#1510#1707#0" expanded="false" />
+            <element signature="e#2875#4056#0" expanded="false" />
+            <element signature="e#4895#5849#0" expanded="false" />
+            <element signature="e#5164#5210#0" expanded="false" />
+            <element signature="e#5337#5386#0" expanded="false" />
+            <element signature="e#5424#5462#0" expanded="false" />
+            <element signature="e#5659#5830#0" expanded="false" />
+            <element signature="e#5699#5727#0" expanded="false" />
+            <element signature="e#9421#9960#0" expanded="false" />
+            <element signature="e#9540#9729#0" expanded="false" />
+            <element signature="e#9599#9675#0" expanded="false" />
+            <element signature="e#9827#9941#0" expanded="false" />
+            <element signature="e#10274#10402#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train_ori.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="196" column="100" lean-forward="false" selection-start-line="196" selection-start-column="100" selection-end-line="196" selection-end-column="100" />
+        <state relative-caret-position="-3439">
+          <caret line="33" column="16" lean-forward="true" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
           <folding>
             <element signature="e#107#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="63" column="35" lean-forward="false" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+          <folding>
+            <element signature="e#27#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
