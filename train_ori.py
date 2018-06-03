@@ -266,7 +266,7 @@ def init_logging():
                         level=logging.DEBUG)
 
 def init_device(gpu):
-    return torch.device(gpu if torch.cuda.is_available() else 'cpu')
+    return torch.device(gpu if torch.cuda.is_available() or gpu==-1 else 'cpu')
 
 def main():
     init_logging()
