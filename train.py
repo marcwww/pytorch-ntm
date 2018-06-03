@@ -93,7 +93,7 @@ def save_checkpoint(net, name, args, epoch, losses, valid_accur, seq_lengths):
         "seq_lengths": seq_lengths
     }
     # open(train_fname, 'wt').write(json.dumps(content))
-    open(train_fname, 'wt').write(str(content))
+    open(train_fname, 'wt').write(json.dumps(content))
 
 
 def clip_grads(net,embs,hid2out):
@@ -183,7 +183,7 @@ def train_batch(net, embs, hid2out, vocb, criterion, optimizer, X, Y):
     clip_grads(net,embs,hid2out)
     optimizer.step()
 
-    return loss.data[0]
+    return float(loss.cpu().data.numpy())
 
 
 def evaluate(net, criterion, X, Y):

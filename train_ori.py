@@ -81,7 +81,7 @@ def save_checkpoint(net, name, args, batch_num, losses, costs, seq_lengths):
         "cost": costs,
         "seq_lengths": seq_lengths
     }
-    open(train_fname, 'wt').write(str(content))
+    open(train_fname, 'wt').write(json.dumps(content))
 
 
 def clip_grads(net):
@@ -120,7 +120,7 @@ def train_batch(net, criterion, optimizer, X, Y):
     # The cost is the number of error bits per sequence
     cost = torch.sum(torch.abs(y_out_binarized - Y.data.cpu()))
 
-    return loss.data[0], cost / batch_size
+    return float(loss.cpu().data.numpy()), cost.cpu().numpy() / batch_size
 
 
 def evaluate(net, criterion, X, Y):
