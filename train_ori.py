@@ -163,8 +163,8 @@ def evaluate(net, criterion, X, Y):
 
 
 def train_model(model, args):
-    num_batches = model.params.num_batches
     batch_size = model.params.batch_size
+    num_batches = int(model.params.num_samples/batch_size)
 
     LOGGER.info("Training model for %d batches (batch_size=%d)...",
                 num_batches, batch_size)

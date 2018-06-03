@@ -84,7 +84,7 @@ class RepeatCopyTaskParams(object):
     repeat_max = attrib(default=10, convert=int)
     memory_n = attrib(default=128, convert=int)
     memory_m = attrib(default=20, convert=int)
-    num_batches = attrib(default=250000, convert=int)
+    num_samples = attrib(default=250000, convert=int)
     batch_size = attrib(default=1, convert=int)
     rmsprop_lr = attrib(default=1e-4, convert=float)
     rmsprop_momentum = attrib(default=0.9, convert=float)
@@ -110,7 +110,7 @@ class RepeatCopyTaskModelTraining(object):
 
     @dataloader.default
     def default_dataloader(self):
-        return dataloader(self.params.num_batches, self.params.batch_size,
+        return dataloader(int(self.params.num_samples/self.params.batch_size), self.params.batch_size,
                           self.params.sequence_width,
                           self.params.sequence_min_len, self.params.sequence_max_len,
                           self.params.repeat_min, self.params.repeat_max)
