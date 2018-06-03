@@ -184,7 +184,7 @@ def train_model(model, args):
         progress_bar(batch_num, args.report_interval, loss)
 
         # Report
-        if batch_num % args.report_interval == 0:
+        if batch_num % int(args.report_interval/batch_size) == 0:
             mean_loss = np.array(losses[-args.report_interval:]).mean()
             mean_cost = np.array(costs[-args.report_interval:]).mean()
             mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
@@ -194,7 +194,7 @@ def train_model(model, args):
             start_ms = get_ms()
 
         # Checkpoint
-        if (args.checkpoint_interval != 0) and (batch_num % args.checkpoint_interval == 0):
+        if (args.checkpoint_interval != 0) and (batch_num % int(args.checkpoint_interval/batch_size) == 0):
             save_checkpoint(model.net, model.params.name, args,
                             batch_num, losses, costs, seq_lengths)
 
