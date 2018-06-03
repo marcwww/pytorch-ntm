@@ -68,10 +68,7 @@ def dataloader(num_batches,
         outp[:seq_len * reps, :, :seq_width] = seq.clone().repeat(reps, 1, 1)
         outp[seq_len * reps, :, seq_width] = 1.0 # End marker
 
-        inp=inp.to(params.device)
-        outp=outp.to(params.device)
-
-        yield batch_num+1, inp.float(), outp.float()
+        yield batch_num+1, inp.float().to(params.device), outp.float().to(params.device)
 
 
 @attrs

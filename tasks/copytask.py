@@ -46,10 +46,8 @@ def dataloader(num_batches,
         inp[:seq_len, :, :seq_width] = seq
         inp[seq_len, :, seq_width] = 1.0 # delimiter in our control channel
         outp = seq.clone()
-        inp=inp.to(params.device)
-        outp=outp.to(params.device)
 
-        yield batch_num+1, inp.float(), outp.float()
+        yield batch_num+1, inp.float().to(params.device), outp.float().to(params.device)
 
 
 @attrs

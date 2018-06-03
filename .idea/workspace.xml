@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15ff7ecf-a83a-47af-b041-1c77bbc1f471" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/train_ori.py" afterPath="$PROJECT_DIR$/train_ori.py" />
+      <change beforePath="$PROJECT_DIR$/tasks/copytask.py" afterPath="$PROJECT_DIR$/tasks/copytask.py" />
+      <change beforePath="$PROJECT_DIR$/tasks/repeatcopytask.py" afterPath="$PROJECT_DIR$/tasks/repeatcopytask.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,15 +14,15 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/pytorch_ntm$train.coverage" NAME="train Coverage Results" MODIFIED="1527925072969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pytorch_ntm$train_ori.coverage" NAME="train_ori Coverage Results" MODIFIED="1527997840210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytorch_ntm$train_ori.coverage" NAME="train_ori Coverage Results" MODIFIED="1527998080472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="copytask.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="102" column="90" lean-forward="false" selection-start-line="102" selection-start-column="90" selection-end-line="102" selection-end-column="90" />
+            <state relative-caret-position="263">
+              <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
               </folding>
@@ -104,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_ori.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="train_ori.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_ori.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="-146">
+              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
               <folding>
                 <element signature="e#107#122#0" expanded="true" />
               </folding>
@@ -138,11 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="repeatcopytask.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="repeatcopytask.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tasks/repeatcopytask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+            <state relative-caret-position="209">
+              <caret line="70" column="88" lean-forward="false" selection-start-line="70" selection-start-column="88" selection-end-line="70" selection-end-column="88" />
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
               </folding>
@@ -185,10 +186,10 @@
         <option value="$PROJECT_DIR$/tasks/abc.py" />
         <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/tasks/abc_embd.py" />
-        <option value="$PROJECT_DIR$/tasks/copytask.py" />
         <option value="$PROJECT_DIR$/tasks/abc_01.py" />
-        <option value="$PROJECT_DIR$/tasks/repeatcopytask.py" />
         <option value="$PROJECT_DIR$/train_ori.py" />
+        <option value="$PROJECT_DIR$/tasks/copytask.py" />
+        <option value="$PROJECT_DIR$/tasks/repeatcopytask.py" />
       </list>
     </option>
   </component>
@@ -547,16 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="102" column="90" lean-forward="false" selection-start-line="102" selection-start-column="90" selection-end-line="102" selection-end-column="90" />
-          <folding>
-            <element signature="e#27#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tasks/abc_01.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
@@ -569,16 +560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
           <caret line="183" column="32" lean-forward="false" selection-start-line="183" selection-start-column="32" selection-end-line="183" selection-end-column="32" />
-          <folding>
-            <element signature="e#27#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/repeatcopytask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
           <folding>
             <element signature="e#27#40#0" expanded="true" />
           </folding>
@@ -622,10 +603,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train_ori.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="-146">
+          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
           <folding>
             <element signature="e#107#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+          <folding>
+            <element signature="e#27#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/repeatcopytask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="70" column="88" lean-forward="false" selection-start-line="70" selection-start-column="88" selection-end-line="70" selection-end-column="88" />
+          <folding>
+            <element signature="e#27#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
