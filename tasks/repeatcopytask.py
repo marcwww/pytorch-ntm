@@ -8,6 +8,7 @@ from torch.autograd import Variable
 from torch import optim
 import numpy as np
 from ntm.aio import EncapsulatedNTM
+import params
 
 
 # Generator of randomized test sequences
@@ -67,6 +68,9 @@ def dataloader(num_batches,
         outp[:seq_len * reps, :, :seq_width] = seq.clone().repeat(reps, 1, 1)
         outp[seq_len * reps, :, seq_width] = 1.0 # End marker
 
+        inp=inp.to(params.device)
+        outp=outp.to(params.device)
+
         yield batch_num+1, inp.float(), outp.float()
 
 
@@ -104,7 +108,7 @@ class RepeatCopyTaskModelTraining(object):
         net = EncapsulatedNTM(self.params.sequence_width + 2, self.params.sequence_width + 1,
                               self.params.controller_size, self.params.controller_layers,
                               self.params.num_heads,
-                              self.params.memory_n, self.params.memory_m)
+                              self.params.memory_n, self.params.memory_m).to(params.device)
         return net
 
     @dataloader.default

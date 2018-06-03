@@ -87,7 +87,7 @@ def dataloader(batch_size,sequence_width,f):
 
 @attrs
 class abcTaskParams(object):
-    name = attrib(default="copy-task")
+    name = attrib(default="abc_01")
     controller_size = attrib(default=100, convert=int)
     controller_layers = attrib(default=1,convert=int)
     num_heads = attrib(default=1, convert=int)
