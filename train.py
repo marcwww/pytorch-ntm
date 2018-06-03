@@ -96,9 +96,12 @@ def save_checkpoint(net, name, args, epoch, losses, valid_accur, seq_lengths):
     open(train_fname, 'wt').write(str(content))
 
 
-def clip_grads(net):
+def clip_grads(net,embs,hid2out):
     """Gradient clipping to the range [10, 10]."""
-    parameters = list(filter(lambda p: p.grad is not None, net.parameters()))
+    parameters = list(filter(lambda p: p.grad is not None, net.parameters()))+\
+                 list(filter(lambda p: p.grad is not None, embs.parameters()))+\
+                 list(filter(lambda p: p.grad is not None, hid2out.parameters()))
+
     for p in parameters:
         p.grad.data.clamp_(-10, 10)
 
@@ -177,7 +180,7 @@ def train_batch(net, embs, hid2out, vocb, criterion, optimizer, X, Y):
     loss = criterion(outputs, Y.view(-1))
 
     loss.backward()
-    clip_grads(net)
+    clip_grads(net,embs,hid2out)
     optimizer.step()
 
     return loss.data[0]

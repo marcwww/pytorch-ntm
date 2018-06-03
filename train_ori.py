@@ -114,7 +114,7 @@ def train_batch(net, criterion, optimizer, X, Y):
     clip_grads(net)
     optimizer.step()
 
-    y_out_binarized = y_out.clone().data
+    y_out_binarized = y_out.clone().data.cpu()
     y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
 
     # The cost is the number of error bits per sequence
