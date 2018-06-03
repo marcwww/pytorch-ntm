@@ -36,7 +36,7 @@ def to_tensor(seq):
     # (seq_len)
     return torch.LongTensor([to_idx(w) for w in seq])
 
-def load_data(batch_size,sequence_width,f):
+def load_data(batch_size,f):
     print(params.device)
     # sequence_width=sequence_width-1
 
@@ -157,7 +157,6 @@ class abcTaskModelTraining(object):
     def default_dataloader_train(self):
         # device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         data = load_data(self.params.batch_size,
-                         self.params.sequence_width,
                          self.params.ftrain)
         return data
 
@@ -165,7 +164,6 @@ class abcTaskModelTraining(object):
     def default_dataloader_valid(self):
         # device = torch.device(self.params.gpu if torch.cuda.is_available() else "cpu")
         data = load_data(self.params.batch_size,
-                         self.params.sequence_width,
                          self.params.fvalid)
         return data
 
