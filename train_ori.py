@@ -15,6 +15,7 @@ import argcomplete
 import torch
 from torch.autograd import Variable
 import numpy as np
+import params
 
 
 LOGGER = logging.getLogger(__name__)
@@ -214,6 +215,8 @@ def init_arguments():
                         help="Path for saving checkpoint data (default: './')")
     parser.add_argument('--report-interval', type=int, default=REPORT_INTERVAL,
                         help="Reporting interval")
+    parser.add_argument('-gpu', type=int, default=0,
+                        help='gpu index (if could be used)')
 
     argcomplete.autocomplete(parser)
 
@@ -262,12 +265,17 @@ def init_logging():
     logging.basicConfig(format='[%(asctime)s] [%(levelname)s] [%(name)s]  %(message)s',
                         level=logging.DEBUG)
 
+def init_device(gpu):
+    return torch.device(gpu if torch.cuda.is_available() else 'cpu')
 
 def main():
     init_logging()
 
     # Initialize arguments
     args = init_arguments()
+
+    params.device = init_device(args.gpu)
+    print(params.device)
 
     # Initialize random
     init_seed(args.seed)
