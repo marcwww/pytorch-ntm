@@ -79,9 +79,9 @@ def load_data(batch_size,f):
 
     return res
 
-def dataloader(batch_size,sequence_width,f):
+def dataloader(batch_size,f):
 
-    data=load_data(batch_size,sequence_width,f)
+    data=load_data(batch_size,f)
     return data
 
 @attrs

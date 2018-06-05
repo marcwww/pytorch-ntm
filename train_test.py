@@ -79,7 +79,7 @@ def save_checkpoint(net, name, args, batch_num, losses, costs, valid_accurs, seq
     content = {
         "loss": losses,
         "cost": costs,
-        "valid_costs": valid_accurs,
+        "valid_accurs": valid_accurs,
         "seq_lengths": seq_lengths
     }
     open(train_fname, 'wt').write(json.dumps(content))

@@ -139,12 +139,12 @@ def test_batch(net, embs, hid2out, X, Y):
     for seq_i in range(batch_size):
         for w_i in range(outp_seq_len):
             if outputs[w_i,seq_i]!=Y[w_i,seq_i]:
-                print('break: ',list(outputs[:w_i+1,seq_i].numpy()),
-                                list(Y[:w_i+1,seq_i].numpy()))
+                # print('break: ',list(outputs[:w_i+1,seq_i].numpy()),
+                #                 list(Y[:w_i+1,seq_i].numpy()))
                 break
             if outputs[w_i,seq_i]==EOS and Y[w_i,seq_i]==EOS:
-                print('correct: ', list(outputs[:w_i + 1, seq_i].numpy()),
-                      list(Y[:w_i+1, seq_i].numpy()))
+                # print('correct: ', list(outputs[:w_i + 1, seq_i].numpy()),
+                #       list(Y[:w_i+1, seq_i].numpy()))
                 ncorrect+=1
                 break
         ntotal+=1
@@ -229,10 +229,13 @@ def test_model(model):
 
         nc = 0
         nt = 0.0
-        for batch_num, x, y in model.dataloader_valid:
+        for percent, x, y in model.dataloader_valid:
             dnc, dnt = test_batch(model.net,model.embs,model.hid2out,x,y)
             nc += dnc
             nt += dnt
+
+            print("\r testing: [{:.2f}]".format(percent), end='')
+
         valid_accur = nc / nt
 
         return valid_accur
