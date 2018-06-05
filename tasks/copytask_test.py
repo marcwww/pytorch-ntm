@@ -92,13 +92,13 @@ class CopyTaskParams(object):
     sequence_max_len = attrib(default=3, convert=int)
     memory_n = attrib(default=128, convert=int)
     memory_m = attrib(default=20, convert=int)
-    num_samples_train = attrib(default=100000, convert=int)
-    num_samples_valid = attrib(default=500, convert=int)
+    num_samples_train = attrib(default=1000000, convert=int)
+    num_samples_valid = attrib(default=1000, convert=int)
     batch_size = attrib(default=1, convert=int)
     rmsprop_lr = attrib(default=1e-4, convert=float)
     rmsprop_momentum = attrib(default=0.9, convert=float)
     rmsprop_alpha = attrib(default=0.95, convert=float)
-    train_ratio = attrib(default=0.01, convert=float)
+    train_ratio = attrib(default=0.1, convert=float)
 
 
 #

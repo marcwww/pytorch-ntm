@@ -204,7 +204,7 @@ def train_model(model, args):
 def init_arguments():
     parser = argparse.ArgumentParser(prog='train_embd.py')
     parser.add_argument('--seed', type=int, default=RANDOM_SEED, help="Seed value for RNGs")
-    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='repeat-copy',
+    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='copy',
                         help="Choose the task to train (default: copy)")
     parser.add_argument('-p', '--param', action='append', default=[],
                         help='Override model params. Example: "-pbatch_size=4 -pnum_heads=2"')

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15ff7ecf-a83a-47af-b041-1c77bbc1f471" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/plot.py" afterPath="$PROJECT_DIR$/plot.py" />
       <change beforePath="$PROJECT_DIR$/tasks/copytask_test.py" afterPath="$PROJECT_DIR$/tasks/copytask_test.py" />
+      <change beforePath="$PROJECT_DIR$/train_ori.py" afterPath="$PROJECT_DIR$/train_ori.py" />
+      <change beforePath="$PROJECT_DIR$/train_test.py" afterPath="$PROJECT_DIR$/train_test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +17,7 @@
     <SUITE FILE_PATH="coverage/pytorch_ntm$train.coverage" NAME="train Coverage Results" MODIFIED="1528044497968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pytorch_ntm$plot.coverage" NAME="plot Coverage Results" MODIFIED="1528130709417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pytorch_ntm$copytask_test.coverage" NAME="copytask_test Coverage Results" MODIFIED="1528130937254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tasks" />
-    <SUITE FILE_PATH="coverage/pytorch_ntm$train_test.coverage" NAME="train_test Coverage Results" MODIFIED="1528130946065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/pytorch_ntm$train_test.coverage" NAME="train_test Coverage Results" MODIFIED="1528131885668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/pytorch_ntm$train_ori.coverage" NAME="train_ori Coverage Results" MODIFIED="1528044453768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pytorch_ntm$Nosetests_in_train_test_py.coverage" NAME="Nosetests in train_test.py Coverage Results" MODIFIED="1528103609887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -25,8 +26,8 @@
       <file leaf-file-name="copytask.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-631">
-              <caret line="47" column="12" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="12" />
+            <state relative-caret-position="298">
+              <caret line="63" column="35" lean-forward="false" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
               </folding>
@@ -74,23 +75,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_test.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="train_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="229" column="39" lean-forward="true" selection-start-line="229" selection-start-column="39" selection-end-line="229" selection-end-column="39" />
+            <state relative-caret-position="-1061">
+              <caret line="238" column="70" lean-forward="false" selection-start-line="238" selection-start-column="70" selection-end-line="238" selection-end-column="70" />
               <folding>
-                <element signature="e#3392#4329#0" expanded="false" />
+                <element signature="e#3394#4331#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="copytask_test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="copytask_test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tasks/copytask_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="150" column="61" lean-forward="false" selection-start-line="150" selection-start-column="61" selection-end-line="150" selection-end-column="61" />
+            <state relative-caret-position="236">
+              <caret line="94" column="41" lean-forward="false" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
               <folding>
                 <element signature="e#27#40#0" expanded="true" />
               </folding>
@@ -110,21 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="copy-task-test-10-batch-100000.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/copy-task-test-10-batch-100000.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51774">
-              <caret line="0" column="2684755" lean-forward="false" selection-start-line="0" selection-start-column="2684755" selection-end-line="0" selection-end-column="2684755" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="train_ori.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_ori.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="178" column="24" lean-forward="false" selection-start-line="178" selection-start-column="24" selection-end-line="178" selection-end-column="24" />
+            <state relative-caret-position="258">
+              <caret line="206" column="87" lean-forward="false" selection-start-line="206" selection-start-column="87" selection-end-line="206" selection-end-column="87" />
               <folding>
                 <element signature="e#107#122#0" expanded="true" />
               </folding>
@@ -193,13 +184,13 @@
         <option value="$PROJECT_DIR$/tasks/abc_01.py" />
         <option value="$PROJECT_DIR$/tasks/abc_embd.py" />
         <option value="$PROJECT_DIR$/tasks/repeatcopytask.py" />
-        <option value="$PROJECT_DIR$/tasks/copytask.py" />
-        <option value="$PROJECT_DIR$/train_ori.py" />
         <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/data/gen_data_copy.py" />
         <option value="$PROJECT_DIR$/train_embd.py" />
-        <option value="$PROJECT_DIR$/train_test.py" />
         <option value="$PROJECT_DIR$/plot.py" />
+        <option value="$PROJECT_DIR$/train_test.py" />
+        <option value="$PROJECT_DIR$/train_ori.py" />
+        <option value="$PROJECT_DIR$/tasks/copytask.py" />
         <option value="$PROJECT_DIR$/tasks/copytask_test.py" />
       </list>
     </option>
@@ -210,9 +201,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
+    <option name="width" value="720" />
     <option name="height" value="838" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -242,6 +233,11 @@
               <item name="pytorch-ntm" type="b2602c69:ProjectViewProjectNode" />
               <item name="pytorch-ntm" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pytorch-ntm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pytorch-ntm" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -367,7 +363,7 @@
       <module name="pytorch-ntm" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_test.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="-pbatch_size=4" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -419,23 +415,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="838" extended-state="0" />
+    <frame x="0" y="24" width="1440" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2718708" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27860028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2725322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20886981" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08882907" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7496424" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5181696" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2987887" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -460,7 +456,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="36" />
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -655,7 +651,7 @@
         <state relative-caret-position="-589">
           <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
           <folding>
-            <element signature="e#27#40#0" expanded="true" />
+            <element signature="e#27#40#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -675,16 +671,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_ori.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="178" column="24" lean-forward="false" selection-start-line="178" selection-start-column="24" selection-end-line="178" selection-end-column="24" />
-          <folding>
-            <element signature="e#107#122#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -724,16 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-631">
-          <caret line="47" column="12" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="12" />
-          <folding>
-            <element signature="e#27#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/copy-task-test-10-batch-100000.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51774">
@@ -752,22 +728,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/copytask_test.py">
+    <entry file="file://$PROJECT_DIR$/train_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="150" column="61" lean-forward="false" selection-start-line="150" selection-start-column="61" selection-end-line="150" selection-end-column="61" />
+        <state relative-caret-position="-1061">
+          <caret line="238" column="70" lean-forward="false" selection-start-line="238" selection-start-column="70" selection-end-line="238" selection-end-column="70" />
+          <folding>
+            <element signature="e#3394#4331#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_ori.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="206" column="87" lean-forward="false" selection-start-line="206" selection-start-column="87" selection-end-line="206" selection-end-column="87" />
+          <folding>
+            <element signature="e#107#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/copytask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="63" column="35" lean-forward="false" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
           <folding>
             <element signature="e#27#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_test.py">
+    <entry file="file://$PROJECT_DIR$/tasks/copytask_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="229" column="39" lean-forward="true" selection-start-line="229" selection-start-column="39" selection-end-line="229" selection-end-column="39" />
+        <state relative-caret-position="236">
+          <caret line="94" column="41" lean-forward="false" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
           <folding>
-            <element signature="e#3392#4329#0" expanded="false" />
+            <element signature="e#27#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

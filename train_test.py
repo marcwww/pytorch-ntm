@@ -65,7 +65,7 @@ def progress_bar(batch_num, report_interval, last_loss):
         "=" * fill, " " * (40 - fill), batch_num, last_loss), end='')
 
 
-def save_checkpoint(net, name, args, batch_num, losses, costs, valid_costs, seq_lengths):
+def save_checkpoint(net, name, args, batch_num, losses, costs, valid_accurs, seq_lengths):
     progress_clean()
 
     basename = "{}/{}-{}-batch-{}".format(args.checkpoint_path, name, args.seed, batch_num)
@@ -79,7 +79,7 @@ def save_checkpoint(net, name, args, batch_num, losses, costs, valid_costs, seq_
     content = {
         "loss": losses,
         "cost": costs,
-        "valid_costs": valid_costs,
+        "valid_costs": valid_accurs,
         "seq_lengths": seq_lengths
     }
     open(train_fname, 'wt').write(json.dumps(content))
@@ -183,17 +183,24 @@ def test_batch(net, X, Y):
     y_out_binarized.apply_(lambda x: 0 if x < 0.5 else 1)
 
     # The cost is the number of error bits per sequence
-    cost = torch.sum(torch.abs(y_out_binarized - Y.data.cpu()))
+    # cost = torch.sum(torch.abs(y_out_binarized - Y.data.cpu()))
+    nc=0
+    nt=0
+    for i in range(batch_size):
+        cost = torch.sum(torch.abs(y_out_binarized[:, i, :] - Y.data.cpu()[:, i, :]))
+        if 0 == cost:
+            nc+=1
+        nt+=1
 
-    return cost.cpu().numpy() / batch_size
+    return nc/nt
 
 def test_model(model):
-    costs = []
+    accurs = []
     for batch_num, x, y in model.dataloader_valid:
-        cost = test_batch(model.net, x, y)
-        costs.append(cost)
+        accur = test_batch(model.net, x, y)
+        accurs.append(accur)
         print("\r testing: [{:.2f}]".format(batch_num/len(model.dataloader_valid)), end='')
-    mean_cost = np.array(costs).mean()
+    mean_cost = np.array(accurs).mean()
 
     return mean_cost
 
@@ -206,7 +213,7 @@ def train_model(model, args):
 
     losses = []
     costs = []
-    valid_costs = []
+    valid_accurs = []
     seq_lengths = []
     start_ms = get_ms()
 
@@ -226,17 +233,17 @@ def train_model(model, args):
             mean_time = int(((get_ms() - start_ms) / args.report_interval) / batch_size)
             progress_clean()
 
-            valid_cost = test_model(model)
-            valid_costs += [valid_cost]
+            valid_accur = test_model(model)
+            valid_accurs += [valid_accur]
 
-            LOGGER.info("Batch %d Loss: %.6f Cost: %.2f Valid cost: %.2f Time: %d ms/sequence",
-                        batch_num, mean_loss, mean_cost, valid_cost, mean_time)
+            LOGGER.info("Batch %d Loss: %.6f Cost: %.2f Valid accuracy: %.2f Time: %d ms/sequence",
+                        batch_num, mean_loss, mean_cost, valid_accur, mean_time)
             start_ms = get_ms()
 
         # Checkpoint
         if (args.checkpoint_interval != 0) and (batch_num % int(args.checkpoint_interval/batch_size) == 0):
             save_checkpoint(model.net, model.params.name, args,
-                            batch_num, losses, costs, valid_costs, seq_lengths)
+                            batch_num, losses, costs, valid_accurs, seq_lengths)
 
     LOGGER.info("Done training.")
 
