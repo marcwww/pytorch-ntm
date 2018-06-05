@@ -32,8 +32,8 @@ TASKS = {
 
 # Default values for program arguments
 RANDOM_SEED = 10
-REPORT_INTERVAL = 200 * 5
-CHECKPOINT_INTERVAL = 1000 * 5
+REPORT_INTERVAL = 200 * 50
+CHECKPOINT_INTERVAL = 1000 * 50
 
 
 def get_ms():
