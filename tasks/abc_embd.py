@@ -17,7 +17,7 @@ SOS=0
 EOS=1
 PAD=2
 w2i={'<SOS>':SOS,'<EOS>':EOS,'<PAD>':PAD}
-emb_dim=50
+emb_dim=64
 VOCB=20
 embeddings=torch.nn.Embedding(num_embeddings=VOCB,embedding_dim=emb_dim)
 embeddings.weight.to(params.device)

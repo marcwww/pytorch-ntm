@@ -9,11 +9,11 @@ import sys
 import crash_on_ipy
 sys.path.append(os.path.abspath(os.getcwd() + "./../"))
 
-batch_num = 100000
+batch_num = 117000
 # files = glob("./repeat-copy/*-{}.json".format(batch_num))
 files=[]
-# files.append("./repeat-copy-task-10-batch-{}.json".format(batch_num))
-files.append("./copy-task-test-10-batch-{}.json".format(batch_num))
+files.append("./repeat-copy-task-10-batch-{}.json".format(batch_num))
+# files.append("./copy-task-test-10-batch-{}.json".format(batch_num))
 
 # Read the metrics from the .json files
 history = [json.loads(open(fname, "rt").read()) for fname in files]
