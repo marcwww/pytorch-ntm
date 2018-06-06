@@ -87,7 +87,7 @@ class CopyTaskParams(object):
     controller_size = attrib(default=100, convert=int)
     controller_layers = attrib(default=1,convert=int)
     num_heads = attrib(default=1, convert=int)
-    sequence_width = attrib(default=8, convert=int)
+    sequence_width = attrib(default=1, convert=int)
     sequence_min_len = attrib(default=2,convert=int)
     sequence_max_len = attrib(default=3, convert=int)
     memory_n = attrib(default=128, convert=int)
