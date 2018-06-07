@@ -23,8 +23,10 @@ LOGGER = logging.getLogger(__name__)
 
 from tasks.copytask import CopyTaskModelTraining, CopyTaskParams
 from tasks.repeatcopytask import RepeatCopyTaskModelTraining, RepeatCopyTaskParams
+from tasks.abc_01 import abcTaskModelTraining,abcTaskParams
 
 TASKS = {
+    'abc_01': (abcTaskModelTraining,abcTaskParams),
     'copy': (CopyTaskModelTraining, CopyTaskParams),
     'repeat-copy': (RepeatCopyTaskModelTraining, RepeatCopyTaskParams)
 }
@@ -202,9 +204,9 @@ def train_model(model, args):
 
 
 def init_arguments():
-    parser = argparse.ArgumentParser(prog='train_embd.py')
+    parser = argparse.ArgumentParser(prog='train_ori.py')
     parser.add_argument('--seed', type=int, default=RANDOM_SEED, help="Seed value for RNGs")
-    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='repeat-copy',
+    parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='copy',
                         help="Choose the task to train (default: copy)")
     parser.add_argument('-p', '--param', action='append', default=[],
                         help='Override model params. Example: "-pbatch_size=4 -pnum_heads=2"')

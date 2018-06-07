@@ -17,7 +17,7 @@ SOS=0
 EOS=1
 PAD=2
 w2i={'<SOS>':SOS,'<EOS>':EOS,'<PAD>':PAD}
-emb_dim=10
+emb_dim=20
 VOCB=20
 embeddings=torch.nn.Embedding(num_embeddings=VOCB,embedding_dim=emb_dim)
 embeddings.weight.to(params.device)
@@ -100,8 +100,8 @@ class abcTaskParams(object):
     rmsprop_lr = attrib(default=1e-4, convert=float)
     rmsprop_momentum = attrib(default=0.9, convert=float)
     rmsprop_alpha = attrib(default=0.95, convert=float)
-    ftrain = attrib(default='./data/train_abc-500.train23-test45.txt', convert=str)
-    fvalid = attrib(default='./data/valid_abc-500.train23-test45.txt', convert=str)
+    ftrain = attrib(default='./data/train_abc-500.txt', convert=str)
+    fvalid = attrib(default='./data/valid_abc-500.txt', convert=str)
     epoches = attrib(default=1000, convert=int)
 #
 # To create a network simply instantiate the `:class:CopyTaskModelTraining`,

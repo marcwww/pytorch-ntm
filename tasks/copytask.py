@@ -13,6 +13,42 @@ from ntm.aio import EncapsulatedNTM
 
 
 # Generator of randomized test sequences
+# def dataloader(num_batches,
+#                batch_size,
+#                seq_width,
+#                min_len,
+#                max_len):
+#     """Generator of random sequences for the copy task.
+#
+#     Creates random batches of "bits" sequences.
+#
+#     All the sequences within each batch have the same length.
+#     The length is [`min_len`, `max_len`]
+#
+#     :param num_batches: Total number of batches to generate.
+#     :param seq_width: The width of each item in the sequence.
+#     :param batch_size: Batch size.
+#     :param min_len: Sequence minimum length.
+#     :param max_len: Sequence maximum length.
+#
+#     NOTE: The input width is `seq_width + 1`, the additional input
+#     contain the delimiter.
+#     """
+#     for batch_num in range(num_batches):
+#
+#         # All batches have the same sequence length
+#         seq_len = random.randint(min_len, max_len)
+#         seq = np.random.binomial(1, 0.5, (seq_len, batch_size, seq_width))
+#         seq = Variable(torch.from_numpy(seq))
+#
+#         # The input includes an additional channel used for the delimiter
+#         inp = Variable(torch.zeros(seq_len + 1, batch_size, seq_width + 1))
+#         inp[:seq_len, :, :seq_width] = seq
+#         inp[seq_len, :, seq_width] = 1.0 # delimiter in our control channel
+#         outp = seq.clone()
+#
+#         yield batch_num+1, inp.float().to(params.device), outp.float().to(params.device)
+
 def dataloader(num_batches,
                batch_size,
                seq_width,
@@ -42,13 +78,12 @@ def dataloader(num_batches,
         seq = Variable(torch.from_numpy(seq))
 
         # The input includes an additional channel used for the delimiter
-        inp = Variable(torch.zeros(seq_len + 1, batch_size, seq_width + 1))
+        inp = Variable(torch.zeros(seq_len + 1, batch_size, seq_width))
         inp[:seq_len, :, :seq_width] = seq
-        inp[seq_len, :, seq_width] = 1.0 # delimiter in our control channel
+        inp[seq_len, :, seq_width-1] = 1.0 # delimiter in our control channel
         outp = seq.clone()
 
         yield batch_num+1, inp.float().to(params.device), outp.float().to(params.device)
-
 
 @attrs
 class CopyTaskParams(object):
@@ -91,11 +126,21 @@ class CopyTaskModelTraining(object):
     criterion = attrib()
     optimizer = attrib()
 
+    # @net.default
+    # def default_net(self):
+    #     # We have 1 additional input for the delimiter which is passed on a
+    #     # separate "control" channel
+    #     net = EncapsulatedNTM(self.params.sequence_width + 1, self.params.sequence_width,
+    #                           self.params.controller_size, self.params.controller_layers,
+    #                           self.params.num_heads,
+    #                           self.params.memory_n, self.params.memory_m).to(params.device)
+    #     return net
+
     @net.default
     def default_net(self):
         # We have 1 additional input for the delimiter which is passed on a
         # separate "control" channel
-        net = EncapsulatedNTM(self.params.sequence_width + 1, self.params.sequence_width,
+        net = EncapsulatedNTM(self.params.sequence_width, self.params.sequence_width,
                               self.params.controller_size, self.params.controller_layers,
                               self.params.num_heads,
                               self.params.memory_n, self.params.memory_m).to(params.device)

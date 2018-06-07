@@ -96,13 +96,13 @@ class abcTaskParams(object):
     sequence_max_len = attrib(default=20, convert=int)
     memory_n = attrib(default=128, convert=int)
     memory_m = attrib(default=20, convert=int)
-    num_batches = attrib(default=50000, convert=int)
+    num_samples = attrib(default=8400, convert=int)
     batch_size = attrib(default=1, convert=int)
     rmsprop_lr = attrib(default=1e-4, convert=float)
     rmsprop_momentum = attrib(default=0.9, convert=float)
     rmsprop_alpha = attrib(default=0.95, convert=float)
-    ftrain = attrib(default='./data/train_abc-1000.txt', convert=str)
-    fvalid = attrib(default='./data/valid_abc-1000.txt', convert=str)
+    ftrain = attrib(default='/Users/marc/Desktop/nlp/code/ntm/pytorch-ntm/data/train_abc-500.txt', convert=str)
+    fvalid = attrib(default='/Users/marc/Desktop/nlp/code/ntm/pytorch-ntm/data/valid_abc-500.txt', convert=str)
     epoches = attrib(default=1000, convert=int)
 #
 # To create a network simply instantiate the `:class:CopyTaskModelTraining`,

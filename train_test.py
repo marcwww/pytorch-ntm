@@ -249,7 +249,7 @@ def train_model(model, args):
 
 
 def init_arguments():
-    parser = argparse.ArgumentParser(prog='train_embd.py')
+    parser = argparse.ArgumentParser(prog='train_test.py')
     parser.add_argument('--seed', type=int, default=RANDOM_SEED, help="Seed value for RNGs")
     parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='copy-test',
                         help="Choose the task to train (default: copy)")
