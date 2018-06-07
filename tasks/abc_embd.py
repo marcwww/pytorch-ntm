@@ -94,7 +94,7 @@ class abcTaskParams(object):
     sequence_min_len = attrib(default=1,convert=int)
     sequence_max_len = attrib(default=20, convert=int)
     memory_n = attrib(default=128, convert=int)
-    memory_m = attrib(default=20, convert=int)
+    memory_m = attrib(default=128, convert=int)
     num_batches = attrib(default=50000, convert=int)
     batch_size = attrib(default=1, convert=int)
     rmsprop_lr = attrib(default=1e-4, convert=float)
