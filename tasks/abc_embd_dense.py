@@ -17,7 +17,7 @@ SOS=0
 EOS=1
 PAD=2
 w2i={'<SOS>':SOS,'<EOS>':EOS,'<PAD>':PAD}
-emb_dim=10
+emb_dim=64
 VOCB=20
 embeddings=torch.nn.Embedding(num_embeddings=VOCB,embedding_dim=emb_dim)
 embeddings.weight.to(params.device)
@@ -94,7 +94,7 @@ class abcTaskParams(object):
     sequence_min_len = attrib(default=1,convert=int)
     sequence_max_len = attrib(default=20, convert=int)
     memory_n = attrib(default=128, convert=int)
-    memory_m = attrib(default=20, convert=int)
+    memory_m = attrib(default=128, convert=int)
     num_batches = attrib(default=50000, convert=int)
     batch_size = attrib(default=1, convert=int)
     rmsprop_lr = attrib(default=1e-4, convert=float)
