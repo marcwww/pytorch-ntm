@@ -87,9 +87,11 @@ class CopyTaskParams(object):
     controller_size = attrib(default=100, convert=int)
     controller_layers = attrib(default=1,convert=int)
     num_heads = attrib(default=1, convert=int)
-    sequence_width = attrib(default=50, convert=int)
-    sequence_min_len = attrib(default=2,convert=int)
-    sequence_max_len = attrib(default=3, convert=int)
+    sequence_width = attrib(default=1, convert=int)
+    slen_min_train = attrib(default=1,convert=int)
+    slen_max_train = attrib(default=10, convert=int)
+    slen_min_valid = attrib(default=11, convert=int)
+    slen_max_valid = attrib(default=19, convert=int)
     memory_n = attrib(default=128, convert=int)
     memory_m = attrib(default=20, convert=int)
     num_samples_train = attrib(default=1000000, convert=int)
@@ -139,16 +141,16 @@ class CopyTaskModelTraining(object):
     def default_dataloader_train(self):
         return dataloader_train(int(self.params.num_samples_train/self.params.batch_size), self.params.batch_size,
                           self.params.sequence_width,
-                          self.params.sequence_min_len,
-                          self.params.sequence_max_len,
+                          self.params.slen_min_train,
+                          self.params.slen_max_train,
                           self.params.train_ratio)
 
     @dataloader_valid.default
     def default_dataloader_valid(self):
         return dataloader_valid(int(self.params.num_samples_valid/self.params.batch_size),self.params.batch_size,
                                self.params.sequence_width,
-                               self.params.sequence_min_len+2,
-                               self.params.sequence_max_len+2)
+                               self.params.slen_min_valid,
+                               self.params.slen_max_valid)
 
     @criterion.default
     def default_criterion(self):

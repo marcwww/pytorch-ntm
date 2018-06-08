@@ -9,7 +9,7 @@ import sys
 import crash_on_ipy
 sys.path.append(os.path.abspath(os.getcwd() + "./../"))
 
-batch_num = 117000
+batch_num = 169000
 # files = glob("./repeat-copy/*-{}.json".format(batch_num))
 files=[]
 files.append("./repeat-copy-task-10-batch-{}.json".format(batch_num))
