@@ -32,8 +32,8 @@ TASKS = {
 
 # Default values for program arguments
 RANDOM_SEED = 10
-REPORT_INTERVAL = 200 * 50
-CHECKPOINT_INTERVAL = 1000 * 50
+REPORT_INTERVAL = 1000
+CHECKPOINT_INTERVAL = 1000
 
 
 def get_ms():
@@ -249,7 +249,7 @@ def train_model(model, args):
 
 
 def init_arguments():
-    parser = argparse.ArgumentParser(prog='train_test.py')
+    parser = argparse.ArgumentParser(prog='train_test_mid.py')
     parser.add_argument('--seed', type=int, default=RANDOM_SEED, help="Seed value for RNGs")
     parser.add_argument('--task', action='store', choices=list(TASKS.keys()), default='copy-test',
                         help="Choose the task to train (default: copy)")
